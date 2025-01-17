@@ -23,3 +23,7 @@ I chose this project because it provides an opportunity to practice and demonstr
 
 ##  Milestone 2:
 Implemented a user login page with username and password fields. Styled using Tailwind CSS for a clean, responsive design. Validates input and handles user authentication upon form submission.
+
+
+## Milestone 3: Server Setup
+Set up the server with express for HTTP requests and mongoose for MongoDB. Configured routing and database connections, providing endpoints for user authentication and other functionalities.
