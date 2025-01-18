@@ -27,3 +27,16 @@ Implemented a user login page with username and password fields. Styled using Ta
 
 ## Milestone 3: Server Setup
 Set up the server with express for HTTP requests and mongoose for MongoDB. Configured routing and database connections, providing endpoints for user authentication and other functionalities.
+
+## Milestone 4: User Model, Controller, and File Upload
+
+In this milestone, we added user management and file upload functionality:
+
+### Key Points:
+1. **User Model**: Created a `User` model for storing user data (name, email, password) in the database.
+2. **User Controller**: Built a controller for handling user-related requests (adding and retrieving users).
+3. **File Upload**: Integrated **Multer** to handle file uploads, allowing users to upload images to the `uploads/` directory.
+4. **Server Updates**: Enhanced `server.js` to support user routes and file upload functionality.
+5. **Testing**: Verified file upload using **Postman**, with successful uploads stored in the `uploads/` folder.
+
+With this, the app can now manage users and handle file uploads, laying the groundwork for future features.
