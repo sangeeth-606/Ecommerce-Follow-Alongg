@@ -3,12 +3,14 @@ const express = require('express');
 const mongoose = require('mongoose');
 const uploadRoutes = require('./routes/uploadRoutes');
 const userRoutes = require('./routes/userRoutes');
+const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
 const PORT = 8084;
 app.use(express.json());
-
+app.use(cors());
+console.log(process.env.MONGODB_URI)
 let connection = mongoose.connect(process.env.MONGODB_URI);
 
 app.get("/ping", (req, res) => {
@@ -25,5 +27,5 @@ app.listen(PORT, async () => {
         console.log(error);
     }
 
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Serverr is running on port ${PORT}`);
 });
