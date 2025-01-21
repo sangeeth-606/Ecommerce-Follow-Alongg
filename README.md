@@ -39,4 +39,35 @@ In this milestone, we added user management and file upload functionality:
 4. **Server Updates**: Enhanced `server.js` to support user routes and file upload functionality.
 5. **Testing**: Verified file upload using **Postman**, with successful uploads stored in the `uploads/` folder.
 
-With this, the app can now manage users and handle file uploads, laying the groundwork for future features.
+
+# Milestone 5: Building the Sign-Up Page 🌟
+
+## Overview
+In this milestone, we focused on creating the **Sign-Up Page** for our application, implementing **form validation**, and adding **routing/navigation** to ensure a smooth and user-friendly registration experience. This milestone is a crucial step in building a functional frontend for user onboarding and improving app navigation.
+
+---
+
+## Goals Achieved 🎯
+1. **Sign-Up Page Development**:
+   - Designed and developed a clean and responsive UI with input fields for:
+     - **Name**
+     - **Email**
+     - **Password**
+
+2. **Form Validation**:
+   - Implemented validation logic to ensure:
+     - All fields are filled.
+     - The email format is valid.
+     - The password meets the minimum length of 6 characters.
+   - Displayed error messages for invalid inputs to guide the user.
+
+3. **UI Design Improvements**:
+   - Created a visually appealing design with proper colors, spacing, and typography.
+   - Added user-friendly elements like clear error messages and styled buttons.
+
+4. **Routing and Navigation**:
+   - Added a **Landing Page** with two buttons:
+     - **SignUp** button that navigates users to the Sign-Up Page.
+     - **Login** button to navigate users to the Login Page.
+   - Implemented routing using `useNavigate` from `react-router-dom` to handle page navigation and improve the user experience.
+
