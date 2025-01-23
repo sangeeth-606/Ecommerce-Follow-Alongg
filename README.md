@@ -100,3 +100,57 @@ In this milestone, we focused on creating the **Sign-Up Page** for our applicati
    - Implemented `cors` to enable secure cross-origin requests for the API.
 
 These steps enhanced the security and functionality of the signup process while ensuring compatibility with frontend requests.
+
+# Milestone 7: User Authentication
+
+## Overview
+
+In this milestone, we focused on implementing user authentication, including user signup and login functionality. We ensured secure password handling and JWT-based authentication for session management.
+
+## Goals Achieved 🎯
+
+1. **User Signup**:
+
+   - Created a `createUser` endpoint to handle user registration.
+   - Implemented validation to check if the user already exists.
+   - Used `bcryptjs` to hash passwords before storing them in the database.
+   - Stored user details securely in the MongoDB database.
+
+2. **User Login**:
+
+   - Created a `loginUser` endpoint to handle user login.
+   - Implemented validation to check if the user exists.
+   - Used `bcryptjs` to compare the provided password with the stored hashed password.
+   - Generated JWT tokens for authenticated sessions using `jsonwebtoken`.
+   - Sent JWT tokens to the client upon successful login.
+
+3. **Error Handling**:
+
+   - Implemented comprehensive error handling for both signup and login processes.
+   - Returned appropriate HTTP status codes and error messages for different scenarios (e.g., user already exists, invalid password, user not found).
+
+4. **Testing with Postman**:
+
+   - Verified the functionality of the `createUser` and `loginUser` endpoints using Postman.
+   - Ensured that the endpoints return the expected responses and handle errors correctly.
+
+5. **Code Refactoring**:
+
+   - Refactored the user controller to improve code readability and maintainability.
+   - Ensured that the code follows best practices for security and performance.
+
+## Example Requests
+
+### Signup Request
+
+- **Method**: POST
+- **URL**: `http://localhost:8080/signup`
+- **Headers**: 
+  - `Content-Type`: `application/json`
+- **Body** (raw JSON):
+  ```json
+  {
+    "name": "Admin",
+    "email": "admin@gmail.com",
+    "password": "heyguys"
+  }

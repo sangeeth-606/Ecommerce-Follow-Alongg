@@ -1,4 +1,3 @@
-// filepath: /home/zape/sange/Desktop/Ecommerce-Follow-Alongg/server/server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const uploadRoutes = require('./routes/uploadRoutes');
@@ -7,10 +6,11 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-const PORT = 8084;
+const PORT = 8080;
+
 app.use(express.json());
-app.use(cors());
-console.log(process.env.MONGODB_URI)
+app.use(cors()); 
+
 let connection = mongoose.connect(process.env.MONGODB_URI);
 
 app.get("/ping", (req, res) => {
