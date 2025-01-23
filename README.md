@@ -154,3 +154,44 @@ In this milestone, we focused on implementing user authentication, including use
     "email": "admin@gmail.com",
     "password": "heyguys"
   }
+
+
+
+# Milestone 8: Product Card Component and Responsive Homepage Design
+
+## Overview
+
+Milestone 8 focuses on designing a reusable product card component and creating a responsive homepage layout to showcase these cards. The aim was to build an organised, visually appealing, and user-friendly interface for displaying product details.
+
+## Achievements 🎯
+
+### 1. Reusable Product Card Component
+- Developed a flexible product card component using props to display dynamic product details.
+- Each card includes key information such as:
+  - **Product Image**: A visually clear representation of the product.
+  - **Name**: The product's title.
+  - **Price**: The cost displayed prominently.
+  - **Description**: A brief overview of the product.
+
+### 2. Responsive Grid Layout
+- Designed a homepage layout using Tailwind CSS to arrange product cards in a neat, grid-based structure.
+- Ensured responsiveness for an optimal viewing experience across various devices:
+  - **Small screens**: Displays cards in a single column.
+  - **Medium screens (768px and above)**: Displays cards in two columns.
+  - **Large screens (1024px and above)**: Displays cards in four columns.
+
+## Learning Goals 🌟
+
+By completing this milestone, the following objectives were achieved:
+- Understanding how to create and style reusable components in frontend development.
+- Learning to use Tailwind CSS to implement dynamic, responsive layouts.
+- Using array mapping to render multiple cards dynamically with unique product data.
+
+## Why Build Card Components? 🤔
+
+- **Showcase Products Effectively**: Provides a visually appealing way to display product details.
+- **Reusable Design**: Easily integrates across multiple pages or sections of the application.
+- **Improved User Experience**: Simplifies browsing and interacting with products.
+- **Organised Layout**: Ensures the homepage remains clean and structured.
+
+
