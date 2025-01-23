@@ -157,7 +157,7 @@ In this milestone, we focused on implementing user authentication, including use
 
 
 
-# Milestone 8: Product Card Component and Responsive Homepage Design
+# Milestone 8: Product Card Component and (styles with gpt)
 
 ## Overview
 
