@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const uploadRoutes = require('./routes/uploadRoutes');
 const userRoutes = require('./routes/userRoutes');
+const productRoutes = require('./routes/productRoutes');
 const cors = require('cors');
 require('dotenv').config();
 
@@ -18,6 +19,7 @@ app.get("/ping", (req, res) => {
 });
 app.use('/', userRoutes);
 app.use('/', uploadRoutes);
+app.use('/', productRoutes);
 
 app.listen(PORT, async () => {
     try {
