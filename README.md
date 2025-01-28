@@ -194,4 +194,29 @@ By completing this milestone, the following objectives were achieved:
 - **Improved User Experience**: Simplifies browsing and interacting with products.
 - **Organised Layout**: Ensures the homepage remains clean and structured.
 
+# Milestone 9: Product Form Component
+
+## Overview
+
+In this milestone, we focused on creating a `ProductForm.jsx` component to handle the addition of new products. This form allows users to input product details and upload images, ensuring a user-friendly interface for managing product data.
+
+## Achievements 🎯
+
+### 1. Product Form Component
+- Developed a `ProductForm.jsx` component to handle product data input.
+- The form includes fields for:
+  - **Product Name**: Input field for the product's name.
+  - **Description**: Textarea for a brief overview of the product.
+  - **Price**: Input field for the product's price.
+  - **Category**: Input field for the product's category.
+  - **Images**: File input for uploading product images.
+
+### 2. State Management
+- Utilized React's `useState` hook to manage form data.
+- Implemented dynamic state updates using computed property names:
+  ```jsx
+  const handleInputChange = (e) => {
+    setProductData({ ...productData, [e.target.name]: e.target.value });
+  };
+
 
