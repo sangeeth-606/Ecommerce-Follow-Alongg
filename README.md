@@ -218,5 +218,36 @@ In this milestone, we focused on creating a `ProductForm.jsx` component to handl
   const handleInputChange = (e) => {
     setProductData({ ...productData, [e.target.name]: e.target.value });
   };
+# Milestone 10: Product Schema and Endpoint Creation 🚀
+
+### Learning Goals 🎯
+- Understand how to write a Mongoose schema for products.
+- Create an endpoint to validate and store product details in MongoDB.
+- Handle file uploads using `multer` and store image paths in the database.
+
+---
+
+### Key Features Implemented 🛠️
+1. **Product Schema:**
+   - Defined the structure for `Product` data, including fields like `name`, `description`, `price`, `category`, and `images`.
+   - Added proper validation to ensure data integrity.
+
+2. **File Upload Handling:**
+   - Configured `multer` to store uploaded images in the `uploads/` folder.
+   - Images are saved with a unique timestamp-based naming convention.
+
+3. **Product Creation Endpoint:**
+   - Created a `POST /createProduct` endpoint to receive product data.
+   - Validated the data fields (`name`, `description`, `price`, `category`, and images).
+   - Saved the product details and image paths to MongoDB.
+
+4. **Validation:**
+   - Ensured all required fields are provided.
+   - Returned an appropriate error response if any field is missing.
+
+---
+
+### Folder Structure 📁
+
 
 
