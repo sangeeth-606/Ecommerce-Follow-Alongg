@@ -247,7 +247,33 @@ In this milestone, we focused on creating a `ProductForm.jsx` component to handl
 
 ---
 
-### Folder Structure 📁
+# Milestone 11 - Display Products Dynamically  
+
+## Overview 📌  
+In this milestone, we made the home page dynamic by fetching product data from MongoDB and displaying it using the **Product Card** component.  
+
+## What We Did 🔧  
+
+### 1️⃣ Backend - Created an API Endpoint  
+- We wrote an endpoint `/getProducts` in the backend to fetch all product data from MongoDB.  
+- The endpoint retrieves product details, including name, description, price, category, and image URLs stored in the database.  
+
+### 2️⃣ Storing Product Images  
+- Images uploaded from the frontend are stored in the `uploads/` folder in the backend.  
+- Only the image file path is stored in MongoDB.  
+- We used `multer` for handling file uploads.  
+
+### 3️⃣ Frontend - Fetching Data  
+- We created a function in `ProductCardList` to fetch data from the backend using `fetch("http://localhost:8080/getProducts")`.  
+- The response is stored in the `products` state using `useState()`.  
+
+### 4️⃣ Displaying Products Dynamically  
+- The fetched product data is mapped and passed to the **Product Card** component.  
+- The image source is set dynamically using `product.images[0]` (assuming the first image).  
+- The UI now updates automatically when new products are added to the database.  
+
+  
+
 
 
 
