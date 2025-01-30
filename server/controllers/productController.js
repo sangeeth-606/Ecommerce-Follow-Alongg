@@ -46,7 +46,19 @@ const createProduct = async (req, res) => {
     }
 };
 
-// multer
-const uploadImages = upload.array("images", 5); 
+// middleware to upload images
+const uploadImages = upload.array("images"); 
 
-module.exports = { createProduct, uploadImages };
+
+
+//milestone 12
+const getProducts = async (req, res) => {
+    try {
+        const products = await Product.find(); 
+        res.json(products);
+    } catch (error) {
+        res.status(500).json({ error: "Error fetching products" });
+    }
+};
+
+module.exports = { createProduct, uploadImages,getProducts };

@@ -17,11 +17,44 @@ const ProductForm = () => {
     setProductData({ ...productData, images: Array.from(e.target.files) });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+  
+    const formData = new FormData();
+    formData.append("name", productData.name);
+    formData.append("description", productData.description);
+    formData.append("price", productData.price);
+    formData.append("category", productData.category);
     
-    console.log(productData);
+    
+    productData.images.forEach((image) => {
+      formData.append("images", image);
+    });
+  
+    try {
+      const response = await fetch("http://localhost:8080/createProduct", {
+        method: "POST",
+        body: formData,
+      });
+  
+      if (response.ok) {
+        alert("Product added successfully!");
+        setProductData({
+          name: "",
+          description: "",
+          price: "",
+          category: "",
+          images: [],
+        });
+      } else {
+        alert("Failed to add product");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Error adding product");
+    }
   };
+  
 
   return (
     <div className="max-w-3xl mx-auto mt-10 p-4 border rounded-lg shadow-lg">
