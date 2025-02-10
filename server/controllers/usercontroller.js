@@ -27,27 +27,25 @@ const loginUser = async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        
         const existingUser = await user.findOne({ email });
         if (!existingUser) {
-            return res.status(404).send({ error: 'User not found' });
+            return res.status(404).json({ error: "User not found" });
         }
 
-        
         const isPasswordValid = await bcrypt.compare(password, existingUser.password);
         if (!isPasswordValid) {
-            return res.status(401).send({ error: 'Invalid password' });
+            return res.status(401).json({ error: "Invalid password" });
         }
 
-        
-        const token = jwt.sign({ userId: existingUser._id }, process.env.JWT_SECRET, );
+        const token = jwt.sign({ userId: existingUser._id }, process.env.JWT_SECRET);
 
-        res.status(200).send({ message: 'Login successful', token });
+        res.status(200).json({ message: "Login successful", email, token });
     } catch (error) {
         console.log(error);
-        res.status(500).send({ error: 'Error logging in' });
+        res.status(500).json({ error: "Error logging in" });
     }
 };
+
 
 const getUsers = async (req, res) => {
     try {

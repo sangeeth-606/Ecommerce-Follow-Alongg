@@ -17,34 +17,33 @@ const upload = multer({ storage: storage });
 
 const createProduct = async (req, res) => {
     try {
-        const { name, description, price, category } = req.body;
+        console.log("Received Data:", req.body); // Debugging log
 
+        const { name, description, price, category, userEmail } = req.body;
         
-        if (!name || !description || !price || !category || !req.files) {
-            return res.status(400).json({ message: "All fields and images are required" });
+        if (!name || !description || !price || !category || !req.files || !userEmail) {
+            return res.status(400).json({ message: "All fields, images, and user email are required" });
         }
 
-        
         const images = req.files.map(file => `uploads/${file.filename}`);
 
-        
         const newProduct = new Product({
             name,
             description,
             price,
             category,
-            images, 
+            images,
+            userEmail,
         });
 
-        
         await newProduct.save();
-
         res.status(201).json({ message: "Product created successfully", product: newProduct });
     } catch (error) {
-        console.log(error);
+        console.error(error);
         res.status(500).json({ error: "Error creating product" });
     }
 };
+
 
 // middleware to upload images
 const uploadImages = upload.array("images"); 
@@ -54,11 +53,18 @@ const uploadImages = upload.array("images");
 //milestone 12
 const getProducts = async (req, res) => {
     try {
-        const products = await Product.find(); 
+        const { email } = req.query; // Get email from query params
+
+        if (!email) {
+            return res.status(400).json({ error: "Email is required" });
+        }
+
+        const products = await Product.find({ userEmail: email }); // Filter products by email
         res.json(products);
     } catch (error) {
         res.status(500).json({ error: "Error fetching products" });
     }
 };
+
 
 module.exports = { createProduct, uploadImages,getProducts };

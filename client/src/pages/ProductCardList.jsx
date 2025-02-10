@@ -25,16 +25,22 @@
 
   const ProductCardList = () => {
     const [products, setProducts] = useState([]);
+    const userEmail = localStorage.getItem("userEmail"); 
 
     useEffect(() => {
-      fetch("http://localhost:8080/getProducts") 
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("Fetched Data:", data); 
-          setProducts(data);
-        })
-        .catch((error) => console.error("Error fetching products:", error));
-    }, []);
+      if (!userEmail) {
+          console.log("No user logged in");
+          return;
+      }
+
+      fetch(`http://localhost:8080/getProducts?email=${userEmail}`) // Send email as query param
+          .then((response) => response.json())
+          .then((data) => {
+              console.log("Fetched Data:", data);
+              setProducts(data);
+          })  
+          .catch((error) => console.error("Error fetching products:", error));
+  }, [userEmail]);
 
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-6">

@@ -11,6 +11,7 @@ const PORT = 8080;
 
 app.use(express.json());
 app.use(cors()); 
+app.use('/uploads', express.static('uploads'));
 
 let connection = mongoose.connect(process.env.MONGODB_URI);
 
