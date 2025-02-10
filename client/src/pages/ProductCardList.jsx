@@ -1,60 +1,45 @@
-// // import React from 'react';
-// import ProductCard from "./ProductCard";
-// import productData from "../components/data.json";
+import { useEffect, useState } from "react";
+import ProductCard from "./ProductCard";
+import EditProductForm from "./EditProductForm";
 
-// function ProductCardList() {
-//   return (
-//     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-6">
-//       {productData.products.map((product) => (
-//         <ProductCard
-//           key={product.id}
-//           name={product.name}
-//           image={product.image}
-//           price={product.price}
-//           description={product.description}
-//         />
-//       ))}
-//     </div>
-//   );
-// }
+const ProductCardList = () => {
+  const [products, setProducts] = useState([]);
+  const [editingProduct, setEditingProduct] = useState(null);
+  const userEmail = localStorage.getItem("userEmail"); 
 
-// export default ProductCardList;
+  useEffect(() => {
+    if (!userEmail) return;
 
-  import { useEffect, useState } from "react";
-  import ProductCard from "./ProductCard";
-
-  const ProductCardList = () => {
-    const [products, setProducts] = useState([]);
-    const userEmail = localStorage.getItem("userEmail"); 
-
-    useEffect(() => {
-      if (!userEmail) {
-          console.log("No user logged in");
-          return;
-      }
-
-      fetch(`http://localhost:8080/getProducts?email=${userEmail}`) // Send email as query param
-          .then((response) => response.json())
-          .then((data) => {
-              console.log("Fetched Data:", data);
-              setProducts(data);
-          })  
-          .catch((error) => console.error("Error fetching products:", error));
+    fetch(`http://localhost:8080/getProducts?email=${userEmail}`)
+      .then((response) => response.json())
+      .then((data) => setProducts(data))
+      .catch((error) => console.error("Error fetching products:", error));
   }, [userEmail]);
 
-    return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-6">
-        {products.map((product) => (
-          <ProductCard
-            key={product._id} 
-            name={product.name}
-            image={product.images[0]} 
-            price={product.price}
-            description={product.description}
-          />
-        ))}
-      </div>
-    );
+  const handleEdit = (product) => {
+    setEditingProduct(product);
   };
 
-  export default ProductCardList;
+  const handleUpdate = (updatedProduct) => {
+    setProducts(products.map((p) => (p._id === updatedProduct._id ? updatedProduct : p)));
+  };
+
+  return (
+    <div className="p-6">
+      {editingProduct && (
+        <EditProductForm
+          product={editingProduct}
+          onUpdate={handleUpdate}
+          onCancel={() => setEditingProduct(null)}
+        />
+      )}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {products.map((product) => (
+          <ProductCard key={product._id} product={product} handleEdit={handleEdit} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default ProductCardList;
