@@ -66,5 +66,43 @@ const getProducts = async (req, res) => {
     }
 };
 
+const getProductById = async (req, res) => {
+    try {
+        const product = await Product.findById(req.params.id);
+        if (!product) return res.status(404).json({ error: "Product not found" });
 
-module.exports = { createProduct, uploadImages,getProducts };
+        res.json(product);
+    } catch (error) {
+        res.status(500).json({ error: "Error fetching product" });
+    }
+};
+
+
+
+
+const updateProduct = async (req, res) => {
+    try {
+        const { productId, updatedData } = req.body;
+
+        if (!productId) {
+            return res.status(400).json({ error: "Product ID is required" });
+        }
+
+        const updatedProduct = await Product.findByIdAndUpdate(
+            productId,
+            updatedData,
+            { new: true } // Return updated product
+        );
+
+        if (!updatedProduct) {
+            return res.status(404).json({ error: "Product not found" });
+        }
+
+        res.json({ message: "Product updated successfully", product: updatedProduct });
+    } catch (error) {
+        res.status(500).json({ error: "Error updating product" });
+    }
+};
+
+
+module.exports = { createProduct, uploadImages,getProducts, updateProduct, getProductById };
