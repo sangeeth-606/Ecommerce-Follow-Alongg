@@ -272,8 +272,34 @@ In this milestone, we made the home page dynamic by fetching product data from M
 - The image source is set dynamically using `product.images[0]` (assuming the first image).  
 - The UI now updates automatically when new products are added to the database.  
 
-  
+# Milestone 12: Dynamic Product Display
 
+### Overview
+In this milestone, we have successfully implemented the feature to dynamically display products on the frontend based on the stored data in the backend.
+
+### Changes Implemented:
+1. **Server-Side Enhancements:**
+   - Created a new API endpoint (`/getProducts`) to fetch all products from the database.
+   - Used `Product.find()` to retrieve stored product details.
+   - Handled errors to ensure smooth API responses.
+
+2. **Client-Side Modifications:**
+   - Updated `ProductCardList` component to fetch product data from the backend.
+   - Used `useEffect` to make an API call and store the retrieved data in state (`setProducts`).
+   - Displayed products dynamically based on the fetched data.
+
+### Code Summary:
+
+#### **Backend (`server/routes/productRoutes.js`)**
+```js
+const express = require('express');
+const { createProduct, uploadImages, getProducts } = require('../controllers/productController'); 
+const router = express.Router();
+
+router.post('/createProduct', uploadImages, createProduct); 
+router.get("/getProducts", getProducts);
+
+module.exports = router;
 
 
 
