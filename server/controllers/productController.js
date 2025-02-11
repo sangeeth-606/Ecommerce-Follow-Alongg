@@ -82,7 +82,8 @@ const getProductById = async (req, res) => {
 
 const updateProduct = async (req, res) => {
     try {
-        const { productId, updatedData } = req.body;
+        const productId = req.params.id; // Get ID from URL params
+        const updatedData = req.body;   // Use entire request body as update data
 
         if (!productId) {
             return res.status(400).json({ error: "Product ID is required" });
@@ -91,7 +92,7 @@ const updateProduct = async (req, res) => {
         const updatedProduct = await Product.findByIdAndUpdate(
             productId,
             updatedData,
-            { new: true } // Return updated product
+            { new: true, runValidators: true } // Ensure validation runs
         );
 
         if (!updatedProduct) {
@@ -100,9 +101,11 @@ const updateProduct = async (req, res) => {
 
         res.json({ message: "Product updated successfully", product: updatedProduct });
     } catch (error) {
+        console.error("Update error:", error);
         res.status(500).json({ error: "Error updating product" });
     }
 };
+
 
 
 module.exports = { createProduct, uploadImages,getProducts, updateProduct, getProductById };

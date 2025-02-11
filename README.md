@@ -300,5 +300,3 @@ router.post('/createProduct', uploadImages, createProduct);
 router.get("/getProducts", getProducts);
 
 module.exports = router;
-
-
