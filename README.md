@@ -300,11 +300,9 @@ router.post('/createProduct', uploadImages, createProduct);
 router.get("/getProducts", getProducts);
 
 module.exports = router;
+```
 
 ----------------------------------------------------------------------
-
-
-
 # Milestone 13: Edit Uploaded Products
 
 ## Overview
@@ -343,7 +341,8 @@ app.get("/getProduct/:id", async (req, res) => {
         res.status(500).json({ error: "Error fetching product" });
     }
 });
-
+```
+----
 
 
 
