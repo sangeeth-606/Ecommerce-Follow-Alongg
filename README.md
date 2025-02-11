@@ -406,3 +406,37 @@ In this milestone, we focused on:
 3. Adjusting layout and padding to fix scrolling issues on the Landing Page.
 
 These changes enhance the user experience by providing a consistent look and feel, improving navigation, and ensuring a responsive layout across different screen sizes.
+
+
+# 🛍️ Milestone 16: Product Info Page  
+
+## 📌 Overview  
+In this milestone, we create a **Product Info Page** that displays detailed product information, allows users to select a quantity, and provides an **"Add to Cart"** button.  
+
+## 🎯 Learning Goals  
+- Create a new page to display product details.  
+- Implement a **quantity selector** to choose the number of items.  
+- Add an **"Add to Cart"** button for users to save products.  
+
+## 🛠️ Steps to Implement  
+
+### 1️⃣ Create the Product Info Page  
+- Fetch the product details using its **ID** from the backend.  
+- Display the **product name, description, price, and images**.  
+- Add an input field for **selecting quantity**.  
+- Include an **"Add to Cart"** button.  
+
+### 2️⃣ Add Routing for Product Info Page  
+- Define a new route: `/product/:id`.  
+- Ensure clicking **"View Details"** navigates to this page.  
+
+### 3️⃣ Modify "View Details" Button  
+- Update the **Product List** page to link each product to its detailed view.  
+
+### ✅ Final Outcome  
+- Users can click **"View Details"** to access full product details.  
+- They can **select a quantity** before adding an item to the cart.  
+- The **"Add to Cart"** button saves the selected item.  
+
+🎉 **Milestone 16 is complete!**  
+
