@@ -106,6 +106,26 @@ const updateProduct = async (req, res) => {
     }
 };
 
+const deleteProduct = async (req, res) => {
+    try {
+        const productId = req.params.id;
+
+        if (!productId) {
+            return res.status(400).json({ error: "Product ID is required" });
+        }
+
+        const deletedProduct = await Product.findByIdAndDelete(productId);
+
+        if (!deletedProduct) {
+            return res.status(404).json({ error: "Product not found" });
+        }
+
+        res.json({ message: "Product deleted successfully" });
+    } catch (error) {
+        console.error("Delete error:", error);
+        res.status(500).json({ error: "Error deleting product" });
+    }
+};
 
 
-module.exports = { createProduct, uploadImages,getProducts, updateProduct, getProductById };
+module.exports = { createProduct, uploadImages,getProducts, updateProduct, getProductById ,deleteProduct};
