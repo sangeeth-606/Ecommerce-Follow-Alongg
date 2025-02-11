@@ -145,7 +145,7 @@ In this milestone, we focused on implementing user authentication, including use
 
 - **Method**: POST
 - **URL**: `http://localhost:8080/signup`
-- **Headers**: 
+- **Headers**:
   - `Content-Type`: `application/json`
 - **Body** (raw JSON):
   ```json
@@ -154,8 +154,7 @@ In this milestone, we focused on implementing user authentication, including use
     "email": "admin@gmail.com",
     "password": "heyguys"
   }
-
-
+  ```
 
 # Milestone 8: Product Card Component and (styles with gpt)
 
@@ -166,6 +165,7 @@ Milestone 8 focuses on designing a reusable product card component and creating 
 ## Achievements 🎯
 
 ### 1. Reusable Product Card Component
+
 - Developed a flexible product card component using props to display dynamic product details.
 - Each card includes key information such as:
   - **Product Image**: A visually clear representation of the product.
@@ -174,6 +174,7 @@ Milestone 8 focuses on designing a reusable product card component and creating 
   - **Description**: A brief overview of the product.
 
 ### 2. Responsive Grid Layout
+
 - Designed a homepage layout using Tailwind CSS to arrange product cards in a neat, grid-based structure.
 - Ensured responsiveness for an optimal viewing experience across various devices:
   - **Small screens**: Displays cards in a single column.
@@ -183,6 +184,7 @@ Milestone 8 focuses on designing a reusable product card component and creating 
 ## Learning Goals 🌟
 
 By completing this milestone, the following objectives were achieved:
+
 - Understanding how to create and style reusable components in frontend development.
 - Learning to use Tailwind CSS to implement dynamic, responsive layouts.
 - Using array mapping to render multiple cards dynamically with unique product data.
@@ -203,6 +205,7 @@ In this milestone, we focused on creating a `ProductForm.jsx` component to handl
 ## Achievements 🎯
 
 ### 1. Product Form Component
+
 - Developed a `ProductForm.jsx` component to handle product data input.
 - The form includes fields for:
   - **Product Name**: Input field for the product's name.
@@ -212,15 +215,19 @@ In this milestone, we focused on creating a `ProductForm.jsx` component to handl
   - **Images**: File input for uploading product images.
 
 ### 2. State Management
+
 - Utilized React's `useState` hook to manage form data.
 - Implemented dynamic state updates using computed property names:
   ```jsx
   const handleInputChange = (e) => {
     setProductData({ ...productData, [e.target.name]: e.target.value });
   };
+  ```
+
 # Milestone 10: Product Schema and Endpoint Creation 🚀
 
 ### Learning Goals 🎯
+
 - Understand how to write a Mongoose schema for products.
 - Create an endpoint to validate and store product details in MongoDB.
 - Handle file uploads using `multer` and store image paths in the database.
@@ -228,15 +235,19 @@ In this milestone, we focused on creating a `ProductForm.jsx` component to handl
 ---
 
 ### Key Features Implemented 🛠️
+
 1. **Product Schema:**
+
    - Defined the structure for `Product` data, including fields like `name`, `description`, `price`, `category`, and `images`.
    - Added proper validation to ensure data integrity.
 
 2. **File Upload Handling:**
+
    - Configured `multer` to store uploaded images in the `uploads/` folder.
    - Images are saved with a unique timestamp-based naming convention.
 
 3. **Product Creation Endpoint:**
+
    - Created a `POST /createProduct` endpoint to receive product data.
    - Validated the data fields (`name`, `description`, `price`, `category`, and images).
    - Saved the product details and image paths to MongoDB.
@@ -247,38 +258,46 @@ In this milestone, we focused on creating a `ProductForm.jsx` component to handl
 
 ---
 
-# Milestone 11 - Display Products Dynamically  
+# Milestone 11 - Display Products Dynamically
 
-## Overview 📌  
-In this milestone, we made the home page dynamic by fetching product data from MongoDB and displaying it using the **Product Card** component.  
+## Overview 📌
 
-## What We Did 🔧  
+In this milestone, we made the home page dynamic by fetching product data from MongoDB and displaying it using the **Product Card** component.
 
-### 1️⃣ Backend - Created an API Endpoint  
-- We wrote an endpoint `/getProducts` in the backend to fetch all product data from MongoDB.  
-- The endpoint retrieves product details, including name, description, price, category, and image URLs stored in the database.  
+## What We Did 🔧
 
-### 2️⃣ Storing Product Images  
-- Images uploaded from the frontend are stored in the `uploads/` folder in the backend.  
-- Only the image file path is stored in MongoDB.  
-- We used `multer` for handling file uploads.  
+### 1️⃣ Backend - Created an API Endpoint
 
-### 3️⃣ Frontend - Fetching Data  
-- We created a function in `ProductCardList` to fetch data from the backend using `fetch("http://localhost:8080/getProducts")`.  
-- The response is stored in the `products` state using `useState()`.  
+- We wrote an endpoint `/getProducts` in the backend to fetch all product data from MongoDB.
+- The endpoint retrieves product details, including name, description, price, category, and image URLs stored in the database.
 
-### 4️⃣ Displaying Products Dynamically  
-- The fetched product data is mapped and passed to the **Product Card** component.  
-- The image source is set dynamically using `product.images[0]` (assuming the first image).  
-- The UI now updates automatically when new products are added to the database.  
+### 2️⃣ Storing Product Images
+
+- Images uploaded from the frontend are stored in the `uploads/` folder in the backend.
+- Only the image file path is stored in MongoDB.
+- We used `multer` for handling file uploads.
+
+### 3️⃣ Frontend - Fetching Data
+
+- We created a function in `ProductCardList` to fetch data from the backend using `fetch("http://localhost:8080/getProducts")`.
+- The response is stored in the `products` state using `useState()`.
+
+### 4️⃣ Displaying Products Dynamically
+
+- The fetched product data is mapped and passed to the **Product Card** component.
+- The image source is set dynamically using `product.images[0]` (assuming the first image).
+- The UI now updates automatically when new products are added to the database.
 
 # Milestone 12: Dynamic Product Display
 
 ### Overview
+
 In this milestone, we have successfully implemented the feature to dynamically display products on the frontend based on the stored data in the backend.
 
 ### Changes Implemented:
+
 1. **Server-Side Enhancements:**
+
    - Created a new API endpoint (`/getProducts`) to fetch all products from the database.
    - Used `Product.find()` to retrieve stored product details.
    - Handled errors to ensure smooth API responses.
@@ -291,21 +310,28 @@ In this milestone, we have successfully implemented the feature to dynamically d
 ### Code Summary:
 
 #### **Backend (`server/routes/productRoutes.js`)**
+
 ```js
-const express = require('express');
-const { createProduct, uploadImages, getProducts } = require('../controllers/productController'); 
+const express = require("express");
+const {
+  createProduct,
+  uploadImages,
+  getProducts,
+} = require("../controllers/productController");
 const router = express.Router();
 
-router.post('/createProduct', uploadImages, createProduct); 
+router.post("/createProduct", uploadImages, createProduct);
 router.get("/getProducts", getProducts);
 
 module.exports = router;
 ```
 
-----------------------------------------------------------------------
+---
+
 # Milestone 13: Edit Uploaded Products
 
 ## Overview
+
 In this milestone, we implemented the **Edit Product** functionality, allowing users to modify previously uploaded products. This involved:
 
 - Adding an **Edit** button to each product card.
@@ -316,7 +342,9 @@ In this milestone, we implemented the **Edit Product** functionality, allowing u
 ---
 
 ## 📌 Learning Goals
+
 By the end of this milestone, you will understand:
+
 - How to create an **update endpoint** in Express.js for modifying database entries.
 - How to **pre-fill form fields** with existing data for a seamless editing experience.
 - How to **send updated product data** from the frontend to the backend and update MongoDB.
@@ -326,29 +354,35 @@ By the end of this milestone, you will understand:
 ## 🏗 Steps Implemented
 
 ### 1️⃣ Backend: Create the Update Endpoint
+
 We added an endpoint to **fetch a single product** and another to **update product details** in MongoDB.
 
 #### ✅ **Fetch a Single Product**
+
 ```javascript
 app.get("/getProduct/:id", async (req, res) => {
-    try {
-        const product = await Product.findById(req.params.id);
-        if (!product) {
-            return res.status(404).json({ error: "Product not found" });
-        }
-        res.json(product);
-    } catch (error) {
-        res.status(500).json({ error: "Error fetching product" });
+  try {
+    const product = await Product.findById(req.params.id);
+    if (!product) {
+      return res.status(404).json({ error: "Product not found" });
     }
+    res.json(product);
+  } catch (error) {
+    res.status(500).json({ error: "Error fetching product" });
+  }
 });
 ```
-----
+
+---
+
 # Milestone 14: Delete Product Functionality 🗑️
 
 ## Overview
+
 In this milestone, we implemented the delete functionality for products, allowing users to remove products from the database. This feature enhances the product management system by providing a way to handle outdated or unwanted items.
 
 ## 📌 Learning Goals
+
 - Understanding DELETE HTTP method implementation in Express.js
 - Handling confirmation dialogs for destructive actions
 - Managing state and navigation after successful deletions
@@ -357,32 +391,18 @@ In this milestone, we implemented the delete functionality for products, allowin
 ## 🏗 Key Features Implemented
 
 ### 1️⃣ Backend Development
+
 - Created a delete endpoint to remove products from MongoDB
 - Implemented proper error handling and status codes
 - Added validation to ensure product exists before deletion
 - Configured proper response messages for success/# Milestone 14: Delete Product Functionality 🗑️
 
-## Overview
-In this milestone, we implemented the delete functionality for products, allowing users to remove products from the database. This feature enhances the product management system by providing a way to handle outdated or unwanted items.
+# Milestone 15: UI Improvements and Navbar Consistency
 
-## 📌 Learning Goals
-- Understanding DELETE HTTP method implementation in Express.js
-- Handling confirmation dialogs for destructive actions
-- Managing state and navigation after successful deletions
-- Implementing proper error handling for delete operations
+In this milestone, we focused on:
 
-## 🏗 Key Features Implemented
+1. Unifying the color theme across the navbar and various pages.
+2. Ensuring the navbar remains on top with proper z-index.
+3. Adjusting layout and padding to fix scrolling issues on the Landing Page.
 
-### 1️⃣ Backend Development
-- Created a delete endpoint to remove products from MongoDB
-- Implemented proper error handling and status codes
-- Added validation to ensure product exists before deletion
-- Configured proper response messages for success/
-
-
-
-
-
-
-
-
+These changes enhance the user experience by providing a consistent look and feel, improving navigation, and ensuring a responsive layout across different screen sizes.
