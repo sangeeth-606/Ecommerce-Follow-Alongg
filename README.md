@@ -343,7 +343,41 @@ app.get("/getProduct/:id", async (req, res) => {
 });
 ```
 ----
+# Milestone 14: Delete Product Functionality 🗑️
 
+## Overview
+In this milestone, we implemented the delete functionality for products, allowing users to remove products from the database. This feature enhances the product management system by providing a way to handle outdated or unwanted items.
+
+## 📌 Learning Goals
+- Understanding DELETE HTTP method implementation in Express.js
+- Handling confirmation dialogs for destructive actions
+- Managing state and navigation after successful deletions
+- Implementing proper error handling for delete operations
+
+## 🏗 Key Features Implemented
+
+### 1️⃣ Backend Development
+- Created a delete endpoint to remove products from MongoDB
+- Implemented proper error handling and status codes
+- Added validation to ensure product exists before deletion
+- Configured proper response messages for success/# Milestone 14: Delete Product Functionality 🗑️
+
+## Overview
+In this milestone, we implemented the delete functionality for products, allowing users to remove products from the database. This feature enhances the product management system by providing a way to handle outdated or unwanted items.
+
+## 📌 Learning Goals
+- Understanding DELETE HTTP method implementation in Express.js
+- Handling confirmation dialogs for destructive actions
+- Managing state and navigation after successful deletions
+- Implementing proper error handling for delete operations
+
+## 🏗 Key Features Implemented
+
+### 1️⃣ Backend Development
+- Created a delete endpoint to remove products from MongoDB
+- Implemented proper error handling and status codes
+- Added validation to ensure product exists before deletion
+- Configured proper response messages for success/
 
 
 
