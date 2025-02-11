@@ -32,7 +32,7 @@ const EditProductPage = () => {
       });
 
       if (response.ok) {
-        navigate("/products"); // Redirect to product list after update
+        navigate("/"); // Redirect to product list after update
       }
     } catch (error) {
       console.error("Error updating product:", error);
@@ -46,9 +46,16 @@ const EditProductPage = () => {
         <input type="text" name="name" value={formData.name} onChange={handleChange} className="w-full p-2 border rounded mb-2" />
         <textarea name="description" value={formData.description} onChange={handleChange} className="w-full p-2 border rounded mb-2" />
         <input type="number" name="price" value={formData.price} onChange={handleChange} className="w-full p-2 border rounded mb-2" />
+        <input
+  type="text"
+  name="category"
+  value={formData.category}
+  onChange={handleChange}
+  className="w-full p-2 border rounded mb-2"
+/>
         <div className="flex justify-between">
-          <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Save</button>
-          <button type="button" onClick={() => navigate("/products")} className="bg-gray-500 text-white px-4 py-2 rounded">Cancel</button>
+          <button type="submit" onClick={() => navigate("/")} className="bg-blue-500 text-white px-4 py-2 rounded">Save</button>
+          <button type="button" onClick={() => navigate("/")} className="bg-gray-500 text-white px-4 py-2 rounded">Cancel</button>
         </div>
       </form>
     </div>

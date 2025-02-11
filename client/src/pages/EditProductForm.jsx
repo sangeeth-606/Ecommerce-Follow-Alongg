@@ -56,6 +56,14 @@ const EditProductForm = ({ product, onUpdate, onCancel }) => {
             onChange={handleChange}
             className="w-full p-2 border rounded mb-2"
           />
+          <input
+  type="text"
+  name="category"
+  value={formData.category}
+  onChange={handleChange}
+  className="w-full p-2 border rounded mb-2"
+/>
+
           <div className="flex justify-between">
             <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Save</button>
             <button type="button" onClick={onCancel} className="bg-gray-500 text-white px-4 py-2 rounded">Cancel</button>
