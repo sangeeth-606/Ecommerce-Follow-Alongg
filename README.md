@@ -301,4 +301,51 @@ router.get("/getProducts", getProducts);
 
 module.exports = router;
 
+----------------------------------------------------------------------
+
+
+
+# Milestone 13: Edit Uploaded Products
+
+## Overview
+In this milestone, we implemented the **Edit Product** functionality, allowing users to modify previously uploaded products. This involved:
+
+- Adding an **Edit** button to each product card.
+- Creating an **Edit Product Form** that auto-fills with existing product data.
+- Developing a **backend endpoint** to update product details in MongoDB.
+- Handling navigation between the product list and the edit form.
+
+---
+
+## 📌 Learning Goals
+By the end of this milestone, you will understand:
+- How to create an **update endpoint** in Express.js for modifying database entries.
+- How to **pre-fill form fields** with existing data for a seamless editing experience.
+- How to **send updated product data** from the frontend to the backend and update MongoDB.
+
+---
+
+## 🏗 Steps Implemented
+
+### 1️⃣ Backend: Create the Update Endpoint
+We added an endpoint to **fetch a single product** and another to **update product details** in MongoDB.
+
+#### ✅ **Fetch a Single Product**
+```javascript
+app.get("/getProduct/:id", async (req, res) => {
+    try {
+        const product = await Product.findById(req.params.id);
+        if (!product) {
+            return res.status(404).json({ error: "Product not found" });
+        }
+        res.json(product);
+    } catch (error) {
+        res.status(500).json({ error: "Error fetching product" });
+    }
+});
+
+
+
+
+
 
