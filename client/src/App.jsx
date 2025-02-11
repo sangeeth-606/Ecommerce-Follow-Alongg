@@ -5,6 +5,7 @@ import LandingPage from "./pages/LandingPage";
 import ProductForm from "./pages/ProductForm";
 import EditProductPage from "./pages/EditProductPage";
 import NavBar from "./pages/NavBar";
+import ProductInfoPage from "./pages/ProductInfoPage";
 
 function App() {
   return (
@@ -13,6 +14,8 @@ function App() {
         <NavBar />
         <div className="min-h-screen">
           <Routes>
+          <Route path="/product/:id" element={<ProductInfoPage />} />
+
             <Route path="/add-product" element={<ProductForm />} />
             <Route path="/edit-product/:id" element={<EditProductPage />} />
             <Route path="/" element={<LandingPage />} />
