@@ -20,9 +20,30 @@ const ProductInfoPage = () => {
     fetchProduct();
   }, [id]);
 
-  const handleAddToCart = () => {
-    console.log(`Added ${quantity} of ${product.name} to cart`);
-    // Here, you can implement cart logic (store in local state or global store)
+  const handleAddToCart = async () => {
+    const { id } = useParams();
+    const productId = id; // Get from useParams()
+    const userEmail = localStorage.getItem("userEmail"); // Retrieve from localStorage
+    const quantity = 1;
+
+    try {
+      const res = await fetch(
+        `http://localhost:8080/addToCart/${productId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            userEmail: userEmail, // Send userEmail in headers
+          },
+          body: JSON.stringify({ quantity }),
+        }
+      );
+
+      const data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.error("Error adding to cart:", error);
+    }
   };
 
   return (
