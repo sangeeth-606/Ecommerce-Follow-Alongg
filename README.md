@@ -468,3 +468,17 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model("User", userSchema);
 module.exports = User;
+
+# ✅ Milestone 18 Completion Report
+
+## 🎯 Objective
+Implement a backend endpoint to fetch all products inside a user's cart using their email.
+
+## 📌 Tasks Completed
+- ✅ Created a **GET** endpoint `/getCart` to fetch cart items for a user.
+- ✅ Modified the **cart schema** to associate items with `userEmail`.
+- ✅ Ensured the frontend retrieves `userEmail` from `localStorage` instead of headers.
+- ✅ Successfully tested **adding to cart** and fetching cart items via API.
+
+## 🚀 Outcome
+The cart functionality is now fully integrated, allowing users to view their cart items based on their email.
