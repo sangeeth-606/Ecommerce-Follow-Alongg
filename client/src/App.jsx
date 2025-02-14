@@ -6,6 +6,7 @@ import ProductForm from "./pages/ProductForm";
 import EditProductPage from "./pages/EditProductPage";
 import NavBar from "./pages/NavBar";
 import ProductInfoPage from "./pages/ProductInfoPage";
+import CartPage from "./pages/CartPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/cart-page" element={<CartPage />} />
           </Routes>
         </div>
       </div>

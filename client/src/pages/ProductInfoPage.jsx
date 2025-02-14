@@ -19,32 +19,49 @@ const ProductInfoPage = () => {
 
     fetchProduct();
   }, [id]);
-
   const handleAddToCart = async () => {
-    const { id } = useParams();
     const productId = id; // Get from useParams()
-    const userEmail = localStorage.getItem("userEmail"); // Retrieve from localStorage
+    const userEmail = localStorage.getItem("userEmail"); // Get email from localStorage
     const quantity = 1;
-
+  
     try {
-      const res = await fetch(
-        `http://localhost:8080/addToCart/${productId}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            userEmail: userEmail, // Send userEmail in headers
-          },
-          body: JSON.stringify({ quantity }),
-        }
-      );
-
+      const res = await fetch(`http://localhost:8080/addToCart/${productId}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userEmail, quantity }), // Send userEmail in body
+      });
+  
       const data = await res.json();
-      console.log(data);
+      console.log("Added to cart:", data);
     } catch (error) {
       console.error("Error adding to cart:", error);
     }
   };
+  
+
+  // const handleAddToCart = async () => {
+  //   const productId = id;
+  //   const userEmail = localStorage.getItem("userEmail"); // Get from localStorage
+  //   const quantity = 1;
+
+  //   if (!userEmail) {
+  //     console.error("No userEmail found in localStorage");
+  //     return;
+  //   }
+
+  //   try {
+  //     const res = await fetch(`http://localhost:8080/addToCart/${productId}`, {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({ userEmail, quantity }), // Send userEmail in body
+  //     });
+
+  //     const data = await res.json();
+  //     console.log(data);
+  //   } catch (error) {
+  //     console.error("Error adding to cart:", error);
+  //   }
+  // };
 
   return (
     <div className="pt-16 flex flex-col items-center justify-center min-h-screen">
