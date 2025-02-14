@@ -32,7 +32,7 @@ const NavBar = () => {
           </Link>
 
           <Link
-            to="/"
+            to="/cart-page"
             className="text-white hover:bg-gray-700 px-4 py-2 rounded transition-colors"
           >
             Cart

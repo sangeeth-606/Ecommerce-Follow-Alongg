@@ -440,3 +440,31 @@ In this milestone, we create a **Product Info Page** that displays detailed prod
 
 🎉 **Milestone 16 is complete!**  
 
+# 🚀 Milestone 17: Implementing the Shopping Cart System
+
+## 📌 Overview  
+In this milestone, we will implement a **shopping cart system** using a **separate Cart Schema** for better scalability and database organization.
+
+## 🎯 Learning Goals  
+By the end of this milestone, you will:  
+✅ Modify the **User Schema** to remove the embedded cart.  
+✅ Create a **Cart Schema** to store cart data separately.  
+✅ Implement an **API endpoint** to add products to the cart.  
+✅ Update the **frontend** to interact with the new cart system.  
+
+---
+
+## 🛠 Step 1: Modify the User Schema  
+We will **remove the cart field** from the `User` schema to keep it separate.  
+
+```js
+const mongoose = require("mongoose");
+
+const userSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  password: String,
+});
+
+const User = mongoose.model("User", userSchema);
+module.exports = User;
