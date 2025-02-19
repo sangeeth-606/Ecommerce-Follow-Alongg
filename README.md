@@ -407,45 +407,52 @@ In this milestone, we focused on:
 
 These changes enhance the user experience by providing a consistent look and feel, improving navigation, and ensuring a responsive layout across different screen sizes.
 
+# 🛍️ Milestone 16: Product Info Page
 
-# 🛍️ Milestone 16: Product Info Page  
+## 📌 Overview
 
-## 📌 Overview  
-In this milestone, we create a **Product Info Page** that displays detailed product information, allows users to select a quantity, and provides an **"Add to Cart"** button.  
+In this milestone, we create a **Product Info Page** that displays detailed product information, allows users to select a quantity, and provides an **"Add to Cart"** button.
 
-## 🎯 Learning Goals  
-- Create a new page to display product details.  
-- Implement a **quantity selector** to choose the number of items.  
-- Add an **"Add to Cart"** button for users to save products.  
+## 🎯 Learning Goals
 
-## 🛠️ Steps to Implement  
+- Create a new page to display product details.
+- Implement a **quantity selector** to choose the number of items.
+- Add an **"Add to Cart"** button for users to save products.
 
-### 1️⃣ Create the Product Info Page  
-- Fetch the product details using its **ID** from the backend.  
-- Display the **product name, description, price, and images**.  
-- Add an input field for **selecting quantity**.  
-- Include an **"Add to Cart"** button.  
+## 🛠️ Steps to Implement
 
-### 2️⃣ Add Routing for Product Info Page  
-- Define a new route: `/product/:id`.  
-- Ensure clicking **"View Details"** navigates to this page.  
+### 1️⃣ Create the Product Info Page
 
-### 3️⃣ Modify "View Details" Button  
-- Update the **Product List** page to link each product to its detailed view.  
+- Fetch the product details using its **ID** from the backend.
+- Display the **product name, description, price, and images**.
+- Add an input field for **selecting quantity**.
+- Include an **"Add to Cart"** button.
 
-### ✅ Final Outcome  
-- Users can click **"View Details"** to access full product details.  
-- They can **select a quantity** before adding an item to the cart.  
-- The **"Add to Cart"** button saves the selected item.  
+### 2️⃣ Add Routing for Product Info Page
 
-🎉 **Milestone 16 is complete!**  
+- Define a new route: `/product/:id`.
+- Ensure clicking **"View Details"** navigates to this page.
+
+### 3️⃣ Modify "View Details" Button
+
+- Update the **Product List** page to link each product to its detailed view.
+
+### ✅ Final Outcome
+
+- Users can click **"View Details"** to access full product details.
+- They can **select a quantity** before adding an item to the cart.
+- The **"Add to Cart"** button saves the selected item.
+
+🎉 **Milestone 16 is complete!**
 
 # ✅ Milestone 17 Completion Report
 
 ## 🎯 Objective
+
 Implement the **Add to Cart** functionality in both the frontend and backend.
 
 ## 📌 Tasks Completed
+
 - ✅ Created a **POST** endpoint `/addToCart/:productId` to add items to the cart.
 - ✅ Fetched `userEmail` from `localStorage` and included it while adding products to the cart.
 - ✅ Updated the **cart schema** to store user-specific cart items.
@@ -453,19 +460,44 @@ Implement the **Add to Cart** functionality in both the frontend and backend.
 - ✅ Successfully tested adding products to the cart.
 
 ## 🚀 Outcome
-Users can now add products to their cart, and the data is stored in the database for future retrieval.
 
+Users can now add products to their cart, and the data is stored in the database for future retrieval.
 
 # ✅ Milestone 18 Completion Report
 
 ## 🎯 Objective
+
 Implement a backend endpoint to fetch all products inside a user's cart using their email.
 
 ## 📌 Tasks Completed
+
 - ✅ Created a **GET** endpoint `/getCart` to fetch cart items for a user.
 - ✅ Modified the **cart schema** to associate items with `userEmail`.
 - ✅ Ensured the frontend retrieves `userEmail` from `localStorage` instead of headers.
 - ✅ Successfully tested **adding to cart** and fetching cart items via API.
 
 ## 🚀 Outcome
+
 The cart functionality is now fully integrated, allowing users to view their cart items based on their email.
+
+# **Milestone 19: Progress Summary**
+
+## **1️⃣ Backend Setup**
+
+- ✅ **Folder Structure**: Organized into `controllers`, `routes`, `models`, etc.
+- ✅ **Database**: Using **MongoDB (with Mongoose)** for storing user and cart data.
+- ✅ **Authentication**: Implemented using **Supabase Auth**.
+- ✅ **API Endpoints**:
+  - `POST /addToCart/:productId` → Add items to the cart.
+  - `POST /removeFromCart/:productId` → Remove or decrease item quantity.
+  - `GET /getCart` → Fetch the user's cart.
+
+## **2️⃣ Frontend Setup**
+
+- ✅ **Framework**: React with functional components.
+- ✅ **State Management**: Using `useState` and `useEffect`.
+- ✅ **Cart Functionality**:
+  - **Add to Cart**: Works correctly, updates frontend and backend.
+  - **Increase Quantity**: Uses `addToCart` API and updates properly.
+  - **Decrease Quantity**: Uses `removeFromCart` API (currently under testing).
+  - **Fetch Cart**: Retrieves cart items on page load.
