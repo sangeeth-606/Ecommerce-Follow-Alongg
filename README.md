@@ -491,6 +491,7 @@ The cart functionality is now fully integrated, allowing users to view their car
   - `POST /addToCart/:productId` → Add items to the cart.
   - `POST /removeFromCart/:productId` → Remove or decrease item quantity.
   - `GET /getCart` → Fetch the user's cart.
+  - with quantity update adn delete cart item
 
 ## **2️⃣ Frontend Setup**
 
