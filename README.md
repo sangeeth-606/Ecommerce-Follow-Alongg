@@ -578,3 +578,43 @@ The cart functionality is now fully integrated, allowing users to view their car
     - Displays addresses in a list with radio buttons for selection, showing `street`, `city`, `state`, `zipCode`, `country`, and `addressType`.
     - Includes a "Confirm Address" button to proceed to the order confirmation page, passing the selected address and `userEmail`.
   - **Styling**: Used Tailwind CSS for a professional, responsive design (cards, buttons, lists).
+
+
+
+# **Milestone 24: Progress Summary**
+
+## **1️⃣ Frontend Setup**
+
+- ✅ **Select Address Page**: Built a `SelectAddress` component to display and select delivery addresses.
+  - Added a "Place Order" button in the `Cart` component, navigating to `/select-address?userEmail=${userEmail}`.
+  - Fetches addresses using `userEmail` to get `_id`, then queries `/api/v1/profile/getProfile`.
+  - Displays addresses with radio buttons for selection, including `street`, `city`, `state`, `zipCode`, `country`, and `addressType`.
+  - Includes a "Confirm Address" button to proceed to `/order-confirmation` with the selected address.
+
+## **2️⃣ Backend Setup**
+
+- ✅ **No Changes**: Leveraged existing endpoints (`/getUserByEmail`, `/getProfile`) for address retrieval.
+
+## **3️⃣ Key Achievements**
+
+- Created a user-friendly address selection page for order placement.
+- Integrated seamlessly with the cart and profile systems.
+
+# **Milestone 25: Progress Summary**
+
+## **1️⃣ Frontend Setup**
+
+- ✅ **Order Confirmation Page**: Developed an `OrderConfirmation` component to display order details.
+  - Displays cart products (name, quantity, price) fetched via `/getCart`.
+  - Shows the selected delivery address from `SelectAddress`.
+  - Displays the total cart value (subtotal).
+  - Includes a "Place Order" button to send order data to `/api/v1/orders/create`.
+
+## **2️⃣ Backend Setup**
+
+- ✅ **Order Endpoint**: Prepared for backend integration with `POST /api/v1/orders/create` to save orders (schema from Milestone 23).
+
+## **3️⃣ Key Achievements**
+
+- Built an order confirmation page for a seamless checkout experience.
+- Integrated cart, address, and order details for end-to-end order placement.
