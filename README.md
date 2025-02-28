@@ -566,3 +566,15 @@ The cart functionality is now fully integrated, allowing users to view their car
 
 - Implemented backend address storage, ensuring profile data persistence.
 - Maintained seamless frontend-backend integration for address management.
+
+# **Milestone 23: Progress Summary**
+
+
+
+- ✅ **Select Address Page**: Created a new `SelectAddress` component to display and select delivery addresses.
+  - **Features**:
+    - Added a "Place Order" button in the `Cart` component that navigates to `/select-address` with `userEmail` as a parameter (e.g., `/select-address?userEmail=${userEmail}`).
+    - Fetches all addresses for the user using `userEmail` to get `_id`, then queries `/api/v1/profile/getProfile?userId=${userId}`.
+    - Displays addresses in a list with radio buttons for selection, showing `street`, `city`, `state`, `zipCode`, `country`, and `addressType`.
+    - Includes a "Confirm Address" button to proceed to the order confirmation page, passing the selected address and `userEmail`.
+  - **Styling**: Used Tailwind CSS for a professional, responsive design (cards, buttons, lists).
