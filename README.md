@@ -144,7 +144,7 @@ In this milestone, we focused on implementing user authentication, including use
 ### Signup Request
 
 - **Method**: POST
-- **URL**: `http://localhost:8080/signup`
+- **URL**: `https://ecommerce-zof6.onrender.com/signup`
 - **Headers**:
   - `Content-Type`: `application/json`
 - **Body** (raw JSON):
@@ -279,7 +279,7 @@ In this milestone, we made the home page dynamic by fetching product data from M
 
 ### 3️⃣ Frontend - Fetching Data
 
-- We created a function in `ProductCardList` to fetch data from the backend using `fetch("http://localhost:8080/getProducts")`.
+- We created a function in `ProductCardList` to fetch data from the backend using `fetch("https://ecommerce-zof6.onrender.com/getProducts")`.
 - The response is stored in the `products` state using `useState()`.
 
 ### 4️⃣ Displaying Products Dynamically

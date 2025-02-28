@@ -19,24 +19,23 @@
 
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();
-  
+
 //     const formData = new FormData();
 //     formData.append("name", productData.name);
 //     formData.append("description", productData.description);
 //     formData.append("price", productData.price);
 //     formData.append("category", productData.category);
-    
-    
+
 //     productData.images.forEach((image) => {
 //       formData.append("images", image);
 //     });
-  
+
 //     try {
-//       const response = await fetch("http://localhost:8080/createProduct", {
+//       const response = await fetch("https://ecommerce-zof6.onrender.com/createProduct", {
 //         method: "POST",
 //         body: formData,
 //       });
-  
+
 //       if (response.ok) {
 //         alert("Product added successfully!");
 //         setProductData({
@@ -54,7 +53,6 @@
 //       alert("Error adding product");
 //     }
 //   };
-  
 
 //   return (
 //     <div className="max-w-3xl mx-auto mt-10 p-4 border rounded-lg shadow-lg">
@@ -126,7 +124,6 @@
 
 // export default ProductForm;
 
-
 import { useState } from "react";
 
 const ProductForm = () => {
@@ -158,39 +155,41 @@ const ProductForm = () => {
     formData.append("userEmail", productData.userEmail); // Send userEmail to backend
 
     productData.images.forEach((image) => {
-        formData.append("images", image);
+      formData.append("images", image);
     });
 
     // Log FormData entries
     for (let pair of formData.entries()) {
-        console.log(pair[0], pair[1]);
+      console.log(pair[0], pair[1]);
     }
 
     try {
-        const response = await fetch("http://localhost:8080/createProduct", {
-            method: "POST",
-            body: formData,
-        });
-
-        if (response.ok) {
-            alert("Product added successfully!");
-            setProductData({
-                name: "",
-                description: "",
-                price: "",
-                category: "",
-                images: [],
-                userEmail: "",
-            });
-        } else {
-            alert("Failed to add product");
+      const response = await fetch(
+        "https://ecommerce-zof6.onrender.com/createProduct",
+        {
+          method: "POST",
+          body: formData,
         }
-    } catch (error) {
-        console.error("Error:", error);
-        alert("Error adding product");
-    }
-};
+      );
 
+      if (response.ok) {
+        alert("Product added successfully!");
+        setProductData({
+          name: "",
+          description: "",
+          price: "",
+          category: "",
+          images: [],
+          userEmail: "",
+        });
+      } else {
+        alert("Failed to add product");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Error adding product");
+    }
+  };
 
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
@@ -207,7 +206,7 @@ const ProductForm = () => {
   //   });
 
   //   try {
-  //     const response = await fetch("http://localhost:8080/createProduct", {
+  //     const response = await fetch("https://ecommerce-zof6.onrender.com/createProduct", {
   //       method: "POST",
   //       body: formData,
   //     });
@@ -311,4 +310,3 @@ const ProductForm = () => {
 };
 
 export default ProductForm;
-
