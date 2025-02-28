@@ -16,7 +16,7 @@
 
 // //       try {
 // //         const res = await fetch(
-// //           `http://localhost:8080/getCart?userEmail=${userEmail}`
+// //           `https://ecommerce-zof6.onrender.com/getCart?userEmail=${userEmail}`
 // //         );
 
 // //         if (!res.ok) {
@@ -70,7 +70,7 @@
 
 //     try {
 //       const res = await fetch(
-//         `http://localhost:8080/getCart?userEmail=${userEmail}`
+//         `https://ecommerce-zof6.onrender.com/getCart?userEmail=${userEmail}`
 //       );
 //       const data = await res.json();
 //       setCartItems(data.cart || []);
@@ -84,7 +84,7 @@
 //     const userEmail = localStorage.getItem("userEmail");
 
 //     try {
-//       await fetch(`http://localhost:8080/addToCart/${productId}`, {
+//       await fetch(`https://ecommerce-zof6.onrender.com/addToCart/${productId}`, {
 //         method: "POST",
 //         headers: { "Content-Type": "application/json" },
 //         body: JSON.stringify({ userEmail, quantity: 1 }),
@@ -101,7 +101,7 @@
 //   //   const userEmail = localStorage.getItem("userEmail");
 
 //   //   try {
-//   //     await fetch(`http://localhost:8080/removeFromCart/${productId}`, {
+//   //     await fetch(`https://ecommerce-zof6.onrender.com/removeFromCart/${productId}`, {
 //   //       method: "POST",
 //   //       headers: { "Content-Type": "application/json" },
 //   //       body: JSON.stringify({ userEmail }),
@@ -116,7 +116,7 @@
 //   //   const userEmail = localStorage.getItem("userEmail");
 
 //   //   try {
-//   //     await fetch(`http://localhost:8080/removeFromCart/${productId}`, {
+//   //     await fetch(`https://ecommerce-zof6.onrender.com/removeFromCart/${productId}`, {
 //   //       method: "POST",
 //   //       headers: { "Content-Type": "application/json" },
 //   //       body: JSON.stringify({ userEmail, quantity: 1 }), // Include quantity
@@ -131,7 +131,7 @@
 //     const userEmail = localStorage.getItem("userEmail");
 
 //     try {
-//       await fetch(`http://localhost:8080/removeFromCart/${productId}`, {
+//       await fetch(`https://ecommerce-zof6.onrender.com/removeFromCart/${productId}`, {
 //         method: "DELETE", // Change to DELETE
 //         headers: { "Content-Type": "application/json" },
 //         body: JSON.stringify({ userEmail, quantity: 1 }),
@@ -196,7 +196,7 @@ function CartPage() {
 
       try {
         const res = await fetch(
-          `http://localhost:8080/getCart?userEmail=${userEmail}`
+          `https://ecommerce-zof6.onrender.com/getCart?userEmail=${userEmail}`
         );
 
         if (!res.ok) {
@@ -217,11 +217,18 @@ function CartPage() {
     if (newQuantity < 1) return;
 
     try {
-      const res = await fetch("http://localhost:8080/updateCart", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userEmail: localStorage.getItem("userEmail"), productId, quantity: newQuantity }),
-      });
+      const res = await fetch(
+        "https://ecommerce-zof6.onrender.com/updateCart",
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            userEmail: localStorage.getItem("userEmail"),
+            productId,
+            quantity: newQuantity,
+          }),
+        }
+      );
 
       if (!res.ok) {
         throw new Error("Failed to update quantity");
@@ -229,7 +236,9 @@ function CartPage() {
 
       setCartItems((prevItems) =>
         prevItems.map((item) =>
-          item.productId._id === productId ? { ...item, quantity: newQuantity } : item
+          item.productId._id === productId
+            ? { ...item, quantity: newQuantity }
+            : item
         )
       );
     } catch (error) {
@@ -239,17 +248,25 @@ function CartPage() {
 
   const removeFromCart = async (productId) => {
     try {
-      const res = await fetch("http://localhost:8080/removeFromCart", {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userEmail: localStorage.getItem("userEmail"), productId }),
-      });
+      const res = await fetch(
+        "https://ecommerce-zof6.onrender.com/removeFromCart",
+        {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            userEmail: localStorage.getItem("userEmail"),
+            productId,
+          }),
+        }
+      );
 
       if (!res.ok) {
         throw new Error("Failed to remove item");
       }
 
-      setCartItems((prevItems) => prevItems.filter((item) => item.productId._id !== productId));
+      setCartItems((prevItems) =>
+        prevItems.filter((item) => item.productId._id !== productId)
+      );
     } catch (error) {
       console.error("Error removing item:", error);
     }
@@ -261,13 +278,35 @@ function CartPage() {
       {cartItems.length > 0 ? (
         <ul className="space-y-4">
           {cartItems.map((item) => (
-            <li key={item.productId._id} className="border-b pb-2 flex items-center justify-between">
+            <li
+              key={item.productId._id}
+              className="border-b pb-2 flex items-center justify-between"
+            >
               <span className="font-semibold">{item.productId.name}</span>
               <div className="flex items-center">
-                <button onClick={() => updateQuantity(item.productId._id, item.quantity - 1)} className="px-2 py-1 bg-gray-300 rounded">-</button>
+                <button
+                  onClick={() =>
+                    updateQuantity(item.productId._id, item.quantity - 1)
+                  }
+                  className="px-2 py-1 bg-gray-300 rounded"
+                >
+                  -
+                </button>
                 <span className="mx-2">{item.quantity}</span>
-                <button onClick={() => updateQuantity(item.productId._id, item.quantity + 1)} className="px-2 py-1 bg-gray-300 rounded">+</button>
-                <button onClick={() => removeFromCart(item.productId._id)} className="ml-4 px-2 py-1 bg-red-500 text-white rounded">Delete</button>
+                <button
+                  onClick={() =>
+                    updateQuantity(item.productId._id, item.quantity + 1)
+                  }
+                  className="px-2 py-1 bg-gray-300 rounded"
+                >
+                  +
+                </button>
+                <button
+                  onClick={() => removeFromCart(item.productId._id)}
+                  className="ml-4 px-2 py-1 bg-red-500 text-white rounded"
+                >
+                  Delete
+                </button>
               </div>
             </li>
           ))}

@@ -1,4 +1,5 @@
-import React from "react";
+// import  from "react";
+import { CgProfile } from 'react-icons/cg';
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
@@ -43,6 +44,13 @@ const NavBar = () => {
             className="text-white hover:bg-gray-700 px-4 py-2 rounded transition-colors"
           >
             Login
+          </Link>
+          <Link
+            to="/profile"
+            className="text-white hover:bg-gray-700 px-4 py-2 rounded transition-colors flex items-center gap-1"
+          >
+            <CgProfile className="text-xl" />
+            Profile
           </Link>
         </div>
       </div>

@@ -9,7 +9,9 @@ const ProductInfoPage = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch(`http://localhost:8080/getProduct/${id}`);
+        const res = await fetch(
+          `https://ecommerce-zof6.onrender.com/getProduct/${id}`
+        );
         const data = await res.json();
         setProduct(data);
       } catch (error) {
@@ -23,21 +25,23 @@ const ProductInfoPage = () => {
     const productId = id; // Get from useParams()
     const userEmail = localStorage.getItem("userEmail"); // Get email from localStorage
     const quantity = 1;
-  
+
     try {
-      const res = await fetch(`http://localhost:8080/addToCart/${productId}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userEmail, quantity }), // Send userEmail in body
-      });
-  
+      const res = await fetch(
+        `https://ecommerce-zof6.onrender.com/addToCart/${productId}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ userEmail, quantity }), // Send userEmail in body
+        }
+      );
+
       const data = await res.json();
       console.log("Added to cart:", data);
     } catch (error) {
       console.error("Error adding to cart:", error);
     }
   };
-  
 
   // const handleAddToCart = async () => {
   //   const productId = id;
@@ -50,7 +54,7 @@ const ProductInfoPage = () => {
   //   }
 
   //   try {
-  //     const res = await fetch(`http://localhost:8080/addToCart/${productId}`, {
+  //     const res = await fetch(`https://ecommerce-zof6.onrender.com/addToCart/${productId}`, {
   //       method: "POST",
   //       headers: { "Content-Type": "application/json" },
   //       body: JSON.stringify({ userEmail, quantity }), // Send userEmail in body

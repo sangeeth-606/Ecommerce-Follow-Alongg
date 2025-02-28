@@ -15,11 +15,14 @@ const EditProductForm = ({ product, onUpdate, onCancel }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:8080/updateProduct/${product._id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `https://ecommerce-zof6.onrender.com/updateProduct/${product._id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (response.ok) {
         const updatedProduct = await response.json();
@@ -57,16 +60,27 @@ const EditProductForm = ({ product, onUpdate, onCancel }) => {
             className="w-full p-2 border rounded mb-2"
           />
           <input
-  type="text"
-  name="category"
-  value={formData.category}
-  onChange={handleChange}
-  className="w-full p-2 border rounded mb-2"
-/>
+            type="text"
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+            className="w-full p-2 border rounded mb-2"
+          />
 
           <div className="flex justify-between">
-            <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Save</button>
-            <button type="button" onClick={onCancel} className="bg-gray-500 text-white px-4 py-2 rounded">Cancel</button>
+            <button
+              type="submit"
+              className="bg-blue-500 text-white px-4 py-2 rounded"
+            >
+              Save
+            </button>
+            <button
+              type="button"
+              onClick={onCancel}
+              className="bg-gray-500 text-white px-4 py-2 rounded"
+            >
+              Cancel
+            </button>
           </div>
         </form>
       </div>

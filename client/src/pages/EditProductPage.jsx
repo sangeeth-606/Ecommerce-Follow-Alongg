@@ -12,7 +12,7 @@ const EditProductPage = () => {
   });
 
   useEffect(() => {
-    fetch(`http://localhost:8080/getProduct/${id}`) // Fetch product details
+    fetch(`https://ecommerce-zof6.onrender.com/getProduct/${id}`) // Fetch product details
       .then((res) => res.json())
       .then((data) => setFormData(data))
       .catch((err) => console.error("Error fetching product:", err));
@@ -26,7 +26,7 @@ const EditProductPage = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        `http://localhost:8080/updateProduct/${id}`,
+        `https://ecommerce-zof6.onrender.com/updateProduct/${id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -47,17 +47,17 @@ const EditProductPage = () => {
     if (window.confirm("Are you sure you want to delete this product?")) {
       try {
         const response = await fetch(
-          `http://localhost:8080/deleteProduct/${id}`,
+          `https://ecommerce-zof6.onrender.com/deleteProduct/${id}`,
           {
             method: "DELETE",
             headers: {
-              "Content-Type": "application/json"
-            }
+              "Content-Type": "application/json",
+            },
           }
         );
-  
+
         const data = await response.json();
-  
+
         if (response.ok) {
           alert("Product deleted successfully");
           navigate("/");
