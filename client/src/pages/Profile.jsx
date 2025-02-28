@@ -415,7 +415,7 @@ const Profile = () => {
           headers: { "Content-Type": "application/json" },
         }
       );
-      const profileData = await profileResponse.json();
+      // const profileData = await profileResponse.json();
 
       let response;
       if (!profileResponse.ok || profileResponse.status === 404) {

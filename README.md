@@ -502,6 +502,7 @@ The cart functionality is now fully integrated, allowing users to view their car
   - **Increase Quantity**: Uses `addToCart` API and updates properly.
   - **Decrease Quantity**: Uses `removeFromCart` API (currently under testing).
   - **Fetch Cart**: Retrieves cart items on page load.
+
 # **Milestone 20: Progress Summary**
 
 ## **1️⃣ Backend Setup**
@@ -519,3 +520,31 @@ The cart functionality is now fully integrated, allowing users to view their car
   - **Fetch Profile**: Retrieves and displays user `name` and `email` from backend.
   - **Error Handling**: Manages loading states and errors (e.g., 404, 500).
   - **Local Storage**: Uses `localStorage.getItem("userEmail")` for profile fetching.
+
+
+  # **Milestone 21: Progress Summary**
+
+## **1️⃣ Backend Setup**
+
+- ✅ **Endpoint Update**: Modified the **GET /getUserByEmail** endpoint to include the user’s `_id` in the response, ensuring the frontend can fetch profiles using the user’s ObjectId.
+  - **Input**: `userEmail` (e.g., `admin11@gmail.com`)
+  - **Output**: JSON response with `{ name, email, _id }` (e.g., `{"name": "admin", "email": "admin11@gmail.com", "_id": "someObjectId123"}`).
+  - **Changes**:
+    - Updated the response object in `getUserByEmail` to include `thisUser._id`.
+    - Maintained existing error handling (400 for missing email, 404 for user not found, 500 for server errors).
+  - **Purpose**: Enables the frontend to retrieve the user’s `_id` and use it to fetch the profile and addresses via the `/getProfile` endpoint.
+
+## **2️⃣ Frontend Setup**
+
+- ✅ **Profile Functionality**: Ensured the `Profile` component correctly fetches the user’s `_id` using `/getUserByEmail`, then uses it to query `/getProfile` to display stored addresses or show the "Add Address" button if no profile exists.
+  - **Improvements**:
+    - Added checks for `userEmail` in `localStorage` to prevent `undefined` errors.
+    - Used `encodeURIComponent` to handle special characters in `userEmail`.
+    - Maintained robust error handling and console debugging for tracking issues.
+  - **Outcome**: Resolved the 400 (Bad Request) error where `userId` was `undefined`, ensuring the profile page dynamically displays addresses or prompts for adding a new address.
+
+## **3️⃣ Key Achievements**
+
+- Successfully fixed the issue where the frontend couldn’t fetch profile data due to missing `_id` in the `/getUserByEmail` response.
+- Improved data consistency between backend and frontend, enabling seamless profile and address management.
+- Maintained the professional e-commerce styling and user experience with Tailwind CSS.
