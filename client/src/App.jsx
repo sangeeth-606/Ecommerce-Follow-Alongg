@@ -10,6 +10,7 @@ import CartPage from "./pages/CartPage";
 import Profile from "./pages/Profile";
 import SelectAddress from "./pages/SelectAddress";
 import OrderConfirmation from "./pages/OrderConfirmation";
+import OrderSuccess from "./pages/OrderSuccess";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path="/cart-page" element={<CartPage />} />
             <Route path="/select-address" element={<SelectAddress />} />
             <Route path="/order-confirmation" element={<OrderConfirmation />} />
+            <Route path="/order-success" element={<OrderSuccess />} />
           </Routes>
         </div>
       </div>
