@@ -69,7 +69,7 @@ const OrderConfirmation = () => {
 
       // Create order in backend (assuming /api/v1/orders endpoint)
       const orderResponse = await fetch(
-        `https://ecommerce-zof6.onrender.com/api/v1/orders`, // You’ll need to create this endpoint
+        `https://ecommerce-zof6.onrender.com/api/v1/orders/create`, // You’ll need to create this endpoint
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

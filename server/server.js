@@ -7,6 +7,7 @@ const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
 const cartRoutes = require('./routes/cartRoutes');
 const profileRoutes = require('./routes/profile');
+const orderRoutes = require('./routes/orderRoutes');
 const cors = require('cors');
 require('dotenv').config();
 
@@ -40,6 +41,7 @@ app.use('/', uploadRoutes);
 app.use('/', productRoutes);
 app.use('/', cartRoutes);
 app.use('/api/v1/profile', profileRoutes);
+app.use('/api/v1/orders', orderRoutes);
 
 app.listen(PORT, async () => {
   try {
