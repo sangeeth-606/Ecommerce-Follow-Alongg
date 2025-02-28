@@ -548,3 +548,21 @@ The cart functionality is now fully integrated, allowing users to view their car
 - Successfully fixed the issue where the frontend couldn’t fetch profile data due to missing `_id` in the `/getUserByEmail` response.
 - Improved data consistency between backend and frontend, enabling seamless profile and address management.
 - Maintained the professional e-commerce styling and user experience with Tailwind CSS.
+
+# **Milestone 22: Progress Summary**
+
+## **1️⃣ Backend Setup**
+
+- ✅ **Endpoint**: Created **POST /api/v1/profile/addAddress** to save addresses in the user’s profile.
+  - **Input**: `userId` and `address` (e.g., `{ street, city, state, zipCode, country, addressType }`).
+  - **Output**: `{ success: true, profile }` or error (400, 404, 500).
+  - **Functionality**: Adds address to `addresses` array in `Profile` collection.
+
+## **2️⃣ Frontend Setup**
+
+- ✅ **Integration**: Updated `Profile` component to use `/addAddress` for saving addresses via the modal form.
+
+## **3️⃣ Key Achievements**
+
+- Implemented backend address storage, ensuring profile data persistence.
+- Maintained seamless frontend-backend integration for address management.
