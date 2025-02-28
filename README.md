@@ -502,3 +502,20 @@ The cart functionality is now fully integrated, allowing users to view their car
   - **Increase Quantity**: Uses `addToCart` API and updates properly.
   - **Decrease Quantity**: Uses `removeFromCart` API (currently under testing).
   - **Fetch Cart**: Retrieves cart items on page load.
+# **Milestone 20: Progress Summary**
+
+## **1️⃣ Backend Setup**
+
+- ✅ **Folder Structure**: Maintained and extended existing structure (`controllers`, `routes`, `models`, etc.) for profile functionality.
+- ✅ **Database**: Using **MongoDB (with Mongoose)** to store and retrieve user `name` and `email`.
+- ✅ **API Endpoints**:
+  - `GET /getUserByEmail` → Fetches user profile data (name and email) based on `userEmail` query parameter, with error handling (404, 400, 500).
+
+## **2️⃣ Frontend Setup**
+
+- ✅ **Framework**: React with functional components.
+- ✅ **State Management**: Using `useState` and `useEffect` for profile data.
+- ✅ **Profile Functionality**:
+  - **Fetch Profile**: Retrieves and displays user `name` and `email` from backend.
+  - **Error Handling**: Manages loading states and errors (e.g., 404, 500).
+  - **Local Storage**: Uses `localStorage.getItem("userEmail")` for profile fetching.
