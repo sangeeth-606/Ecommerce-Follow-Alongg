@@ -618,3 +618,23 @@ The cart functionality is now fully integrated, allowing users to view their car
 
 - Built an order confirmation page for a seamless checkout experience.
 - Integrated cart, address, and order details for end-to-end order placement.
+
+# **Milestone 26: Progress Summary**
+
+## **1️⃣ Backend Setup**
+
+- ✅ **Endpoint Update**: Modified **GET /api/v1/orders/user-orders** to accept `userEmail` and retrieve user orders.
+  - **Input**: `userEmail` (e.g., `admin11@gmail.com`) as a query parameter.
+  - **Output**: `{ success: true, orders }` with all orders for the user, populated with product details, or error (400, 404, 500).
+  - **Changes**:
+    - Updated `getUserOrders` to fetch the user’s `_id` using `userEmail`, then retrieve orders using that `_id`.
+    - Maintained population of product details and sorting by `createdAt`.
+
+## **2️⃣ Frontend Setup**
+
+- ✅ **No Changes**: Leveraged existing `userEmail` from `localStorage` to call `/api/v1/orders/user-orders` for order history or user dashboards.
+
+## **3️⃣ Key Achievements**
+
+- Enabled fetching user orders using email, improving order history accessibility.
+- Ensured seamless integration with existing backend and frontend systems.
