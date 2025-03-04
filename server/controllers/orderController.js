@@ -35,7 +35,7 @@ const createOrder = async (req, res) => {
   }
 };
 
-// Get orders for a user
+// Get orders for a userrr
 const getUserOrders = async (req, res) => {
   try {
     const { userId } = req.query;
