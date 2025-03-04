@@ -12,10 +12,10 @@ const NavBar = () => {
 
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4">
           <Link
-            to="/"
+            to="/my-orders"
             className="text-white hover:bg-gray-700 px-4 py-2 rounded transition-colors"
           >
-            Home
+            My Orders
           </Link>
 
           <Link
