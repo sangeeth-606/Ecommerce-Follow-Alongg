@@ -638,3 +638,23 @@ The cart functionality is now fully integrated, allowing users to view their car
 
 - Enabled fetching user orders using email, improving order history accessibility.
 - Ensured seamless integration with existing backend and frontend systems.
+
+# **Milestone 27: Progress Summary**
+
+## **1️⃣ Frontend Setup**
+
+- ✅ **My Orders Page**: Created a `MyOrders` component to display all user orders.
+  - Uses `userEmail` from `localStorage` to fetch `_id` via `/getUserByEmail`.
+  - Sends GET request to `/api/v1/orders/user-orders` with `_id` to retrieve orders.
+  - Displays orders with details (ID, status, date, products, address, total) in a responsive, styled list.
+  - Added loading, error, and no-orders states with retry and navigation options.
+  - Integrated `MyOrders` link in the navbar for navigation.
+
+## **2️⃣ Backend Setup**
+
+- ✅ **No Changes**: Leveraged existing **GET /api/v1/orders/user-orders** endpoint to fetch user orders using `_id`.
+
+## **3️⃣ Key Achievements**
+
+- Built a user-friendly order history page for viewing past orders.
+- Enhanced navigation with a dedicated “My Orders” link in the navbar.
