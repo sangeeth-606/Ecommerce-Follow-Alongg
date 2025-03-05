@@ -658,3 +658,22 @@ The cart functionality is now fully integrated, allowing users to view their car
 
 - Built a user-friendly order history page for viewing past orders.
 - Enhanced navigation with a dedicated “My Orders” link in the navbar.
+
+# **Milestone 28: Progress Summary**
+
+## **1️⃣ Frontend Setup**
+
+- ✅ **My Orders Page Update**: Enhanced the `MyOrders` component to include a "Cancel Order" button for each order.
+  - Added the button for non-canceled orders (e.g., `pending`, `shipped`, `delivered`), hidden for canceled orders.
+  - Implemented cancellation logic via a PUT request to `/api/v1/orders/cancel/:orderId`, updating the UI dynamically.
+
+## **2️⃣ Backend Setup**
+
+- ✅ **Cancel Endpoint**: Created **PUT /api/v1/orders/cancel/:orderId** in `orderController.js` and `orderRoutes.js`.
+  - Accepts `orderId` as a parameter, checks if the order exists and isn’t already canceled, then updates `status` to `cancelled`.
+  - Returns `{ success: true, message: "Order canceled successfully" }` or appropriate errors (400, 404, 500).
+
+## **3️⃣ Key Achievements**
+
+- Enabled users to cancel placed orders directly from the `MyOrders` page.
+- Ensured seamless integration between frontend and backend for order cancellation.
