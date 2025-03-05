@@ -8,4 +8,6 @@ router.post('/create', createOrder);
 // Get all orders for a user
 router.get('/user-orders', getUserOrders);
 
+router.put('/cancel/:orderId', cancelOrder); // Using PUT for update (canceling is an update operation)
+
 module.exports = router;
