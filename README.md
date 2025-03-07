@@ -695,3 +695,23 @@ The cart functionality is now fully integrated, allowing users to view their car
 
 - Prepared `OrderConfirmation` to transition to a dedicated payment options page.
 - Ensured seamless data transfer for payment processing in the next milestone.
+
+# **Milestone 30: Progress Summary**
+
+## **1️⃣ Frontend Setup**
+
+- ✅ **Payment Options Page**: Created a `PaymentOptions` component to handle payment methods.
+  - Receives order details (`userEmail`, `cartItems`, `subtotal`, `selectedAddress`) from `OrderConfirmation` via `useLocation`.
+  - Added radio buttons for "Cash on Delivery (COD)" and "Online Payment" selection.
+  - Integrated PayPal payments using `@paypal/react-paypal-js` (`PayPalScriptProvider`, `PayPalButtons`) for Online Payment.
+  - Saves the order via `/api/v1/orders/create` after successful payment (PayPal or COD).
+  - Navigates to `/order-success` after order placement with a 5-second delay.
+
+## **2️⃣ Backend Setup**
+
+- ✅ **No Changes**: Leveraged existing `/getUserByEmail` and `/api/v1/orders/create` endpoints for order placement.
+
+## **3️⃣ Key Achievements**
+
+- Implemented PayPal payment integration for online payments in the sandbox environment.
+- Enabled COD and Online Payment options with seamless order placement.
