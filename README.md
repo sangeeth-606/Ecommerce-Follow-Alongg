@@ -677,3 +677,21 @@ The cart functionality is now fully integrated, allowing users to view their car
 
 - Enabled users to cancel placed orders directly from the `MyOrders` page.
 - Ensured seamless integration between frontend and backend for order cancellation.
+
+# **Milestone 29: Progress Summary**
+
+## **1️⃣ Frontend Setup**
+
+- ✅ **Order Confirmation Update**: Modified `OrderConfirmation` component to include navigation to a payment options page.
+  - Added logic to navigate to `/payment-options` when "Place Order" is clicked.
+  - Passes order details (`userEmail`, `cartItems`, `subtotal`, `selectedAddress`) as state for the next page.
+  - Maintained existing styling and structure, deferring payment method selection to a new page.
+
+## **2️⃣ Backend Setup**
+
+- ✅ **No Changes**: Leveraged existing endpoints (`/getUserByEmail`, `/getCart`, `/api/v1/orders/create`) for order preparation.
+
+## **3️⃣ Key Achievements**
+
+- Prepared `OrderConfirmation` to transition to a dedicated payment options page.
+- Ensured seamless data transfer for payment processing in the next milestone.

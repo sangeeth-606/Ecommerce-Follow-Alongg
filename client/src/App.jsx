@@ -12,6 +12,7 @@ import SelectAddress from "./pages/SelectAddress";
 import OrderConfirmation from "./pages/OrderConfirmation";
 import OrderSuccess from "./pages/OrderSuccess";
 import MyOrders from "./pages/MyOrders";
+import PaymentOptions from "./pages/PaymentOptions";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             <Route path="/cart-page" element={<CartPage />} />
             <Route path="/select-address" element={<SelectAddress />} />
             <Route path="/order-confirmation" element={<OrderConfirmation />} />
+            <Route path="/payment-options" element={<PaymentOptions />} />
             <Route path="/order-success" element={<OrderSuccess />} />
             <Route path="/my-orders" element={<MyOrders/>} />
           </Routes>
