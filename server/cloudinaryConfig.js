@@ -15,7 +15,7 @@ const storage = new CloudinaryStorage({
   params: {
     folder: "ecom-product", // Folder name in Cloudinary
     allowed_formats: ["jpg", "jpeg", "png", "webp"], // Allowed file formats
-    transformation: [{ width: 500, height: 500, crop: "limit" }], // Optional: Resize images
+    // transformation: [{ width: 500, height: 500, crop: "limit" }], // Optional: Resize images
   },
 });
 
