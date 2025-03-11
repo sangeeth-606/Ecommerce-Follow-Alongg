@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setEmail } from "../store/userActions";
+import { setEmaill } from "../store/userActions.js"; // Changed to singular
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -10,7 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent form reload
+    e.preventDefault();
 
     if (!email || !password) {
       alert("Please enter both email and password");
@@ -28,8 +28,9 @@ const Login = () => {
 
       if (response.ok) {
         alert("Login successful!");
-        dispatch(setEmail(email)); // Store email in Redux
-        navigate("/"); // Redirect to products page
+        console.log("setEmail:", setEmail); // Debug log
+        dispatch(setEmaill(email));
+        navigate("/");
       } else {
         alert(data.error || "Login failed");
       }

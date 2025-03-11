@@ -10,10 +10,13 @@ const profileRoutes = require('./routes/profile');
 const orderRoutes = require('./routes/orderRoutes');
 const cors = require('cors');
 require('dotenv').config();
+const cookieParser = require("cookie-parser");
+
+
 
 const app = express();
 const PORT = 8080;
-
+app.use(cookieParser());
 
 app.use(cors({
   origin: 'http://localhost:5173',
