@@ -715,3 +715,22 @@ The cart functionality is now fully integrated, allowing users to view their car
 
 - Implemented PayPal payment integration for online payments in the sandbox environment.
 - Enabled COD and Online Payment options with seamless order placement.
+
+# **Milestone 31: Progress Summary**
+
+## **1️⃣ Frontend Setup**
+
+- ✅ **Redux Installation**: Installed the `react-redux` npm package for global state management.
+- ✅ **Store Folder Creation**: Created a `store` folder in the `client` directory with `store.js` and `userActions.js` files.
+- ✅ **Global State Configuration**: Configured a Redux store in `store.js` with a `userReducer` to manage the user’s email state.
+- ✅ **Action Creator**: Defined a `setEmail` function in `userActions.js` to update the email in the global state.
+- ✅ **Provider Integration**: Wrapped the `App` component with the `Provider` component in `main.jsx`, passing the store as a prop.
+
+## **2️⃣ Backend Setup**
+
+- ✅ **No Changes**: Leveraged existing frontend structure without backend modifications.
+
+## **3️⃣ Key Achievements**
+
+- Successfully set up Redux to manage the user’s email as a global state, accessible across components like `OrderConfirmation`, `PaymentOptions`, and `MyOrders`.
+- Established a foundation for centralized state management in the e-commerce application.
