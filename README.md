@@ -771,3 +771,23 @@ The cart functionality is now fully integrated, allowing users to view their car
 - Successfully implemented Redux to manage and access the user’s email across the application, enhancing state consistency.
 - Added authentication checks in `OrderConfirmation` to redirect unauthenticated users to the login page.
 - Improved security and maintainability by centralizing email management in Redux.
+
+# **Milestone 33: Progress Summary**
+
+## **1️⃣ Frontend Setup**
+
+- ✅ **Updated Login Page**: Modified `Login.jsx` to remove `localStorage.setItem` for both `userEmail` and `token`, relying on Redux (`setEmail`) and the backend-sent cookie (`authToken`).
+- ✅ **No Additional Changes**: Ensured compatibility with the new backend cookie-based authentication.
+
+## **2️⃣ Backend Setup**
+
+- ✅ **Installed jsonwebtoken**: Added the `jsonwebtoken` package to the server using NPM.
+- ✅ **JWT Token Creation**: Updated `loginUser` in `userController.js` to use `jwt.sign` to create a token with `email` and `_id`, signed with `process.env.JWT_SECRET` or a fallback secret.
+- ✅ **Set Expiration Time**: Configured the token with `expiresIn: "1h"` and set `maxAge: 3600000` (1 hour) for the cookie.
+- ✅ **Added Cookie to Response**: Implemented `res.cookie` to send the `authToken` with `httpOnly`, `secure` (in production), and `sameSite: "strict"` options for security.
+
+## **3️⃣ Key Achievements**
+
+- Successfully implemented JWT-based authentication, storing the token securely as a cookie instead of `localStorage`.
+- Centralized email management in Redux, removing redundant `localStorage` usage.
+- Enhanced security with `httpOnly` cookies to prevent client-side access.
