@@ -36,6 +36,8 @@ function CartPage() {
         }
 
         const data = await res.json();
+        console.log("Fetched cart items:", data);
+
         setCartItems(data.cart || []);
 
         // Calculate subtotal
