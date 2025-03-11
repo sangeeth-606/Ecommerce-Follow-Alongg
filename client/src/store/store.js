@@ -21,7 +21,7 @@ const userReducer= (state = intialState,action)=>{
 const store= configureStore({
     reducer:{
         user:userReducer,
-    };
+    }
 });
 
 export default store;
