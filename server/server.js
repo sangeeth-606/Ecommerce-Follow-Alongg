@@ -17,13 +17,18 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const PORT = 8080;
 app.use(cookieParser());
-
 app.use(cors({
-  
+  origin: 'https://ecommerce-follow-alongg.vercel.app',
   methods: ['GET','POST','PUT','PATCH','DELETE','OPTIONS'],
   allowedHeaders: ['Content-Type','Authorization','X-Requested-With'],
   credentials: true
 }));
+// app.use(cors({
+//   origin: 'http://localhost:5173',
+//   methods: ['GET','POST','PUT','PATCH','DELETE','OPTIONS'],
+//   allowedHeaders: ['Content-Type','Authorization','X-Requested-With'],
+//   credentials: true
+// }));
 // ...existing code...
 // Middleware for JSON and URL-encoded data
 app.use(express.json());
