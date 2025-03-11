@@ -24,38 +24,38 @@ const createUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
   try {
+    console.log("Login request received:", req.body); // Log incoming request
     const { email, password } = req.body;
 
     const existingUser = await user.findOne({ email });
+    console.log("User lookup result:", existingUser); // Log user found or null
     if (!existingUser) {
       return res.status(404).json({ error: "User not found" });
     }
 
     const isPasswordValid = await bcrypt.compare(password, existingUser.password);
+    console.log("Password validation result:", isPasswordValid); // Log password check
     if (!isPasswordValid) {
       return res.status(401).json({ error: "Invalid password" });
     }
 
-    // Create JWT token with email and _id
     const token = jwt.sign(
       { email: existingUser.email, id: existingUser._id },
-      process.env.JWT_SECRET || "your-secret-key", // Use env variable or fallback
-      { expiresIn: "1h" } // Token expires in 1 hour
+      process.env.JWT_SECRET || "your-secret-key",
+      { expiresIn: "1h" }
     );
 
-    // Set the token as a cookie
     res.cookie("authToken", token, {
-      httpOnly: true, // Prevents client-side JavaScript access
-      maxAge: 3600000, // 1 hour in milliseconds
-      secure: process.env.NODE_ENV === "production", // Use secure in production
-      sameSite: "strict", // Protects against CSRF
+      httpOnly: true,
+      maxAge: 3600000,
+      secure: false, // Force insecure for local testing
+      sameSite: "lax", // Relaxed for testing
     });
-    console.log("Cookie set:", token); // Debug log
+    console.log("Cookie set with token:", token); // Confirm cookie set
 
-    // Send success response (no token in body, as it's in cookie)
     res.status(200).json({ message: "Login successful" });
   } catch (error) {
-    console.log(error);
+    console.log("Error during login:", error); // Log any exceptions
     res.status(500).json({ error: "Error logging in" });
   }
 };

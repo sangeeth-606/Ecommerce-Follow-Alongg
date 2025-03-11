@@ -791,3 +791,27 @@ The cart functionality is now fully integrated, allowing users to view their car
 - Successfully implemented JWT-based authentication, storing the token securely as a cookie instead of `localStorage`.
 - Centralized email management in Redux, removing redundant `localStorage` usage.
 - Enhanced security with `httpOnly` cookies to prevent client-side access.
+
+-# **Milestone 34: Cookie-Based Authentication Setup**
+
+## **1️⃣ Backend Setup**
+
+- ✅ **Created Authentication Middleware**: Added `authenticateToken` middleware in `server/middleware/auth.js` to validate the `authToken` cookie using `jsonwebtoken`, attaching decoded user data (email, id) to `req.user`.
+- ✅ **Updated Login to Set Cookie**: Modified `loginUser` in `userController.js` to set the `authToken` cookie with `httpOnly: true`, `maxAge: 3600000` (1 hour), `secure: false` (local testing), and `sameSite: "none"` to handle cross-site requests.
+- ✅ **Protected Routes**: Applied `authenticateToken` middleware to routes like `/api/getCart` (routes/cart.js) and `/api/v1/profile/getProfile` (routes/profile.js) to ensure only authenticated users can access them.
+- ✅ **Profile Feature Implementation**: Updated `profileController.js` to use `req.user.id` for fetching or creating profiles, eliminating the need for query parameters in `/getProfile` and `/create` endpoints.
+- ✅ **Server Configuration**: Added `cookie-parser` middleware in `server.js` and configured CORS with `credentials: true` to allow cookie transmission.
+
+## **2️⃣ Frontend Setup**
+
+- ✅ **Updated Fetch Requests**: Added `credentials: "include"` to all fetch calls (e.g., in `Login.jsx`, `ProfileComponent.jsx`) to send the `authToken` cookie with requests to protected routes.
+- ✅ **Profile Component**: Created `ProfileComponent.jsx` to fetch or create a user profile using `/api/v1/profile/getProfile` and `/create`, displaying profile data (name, email, addresses).
+- ✅ **Redux Persistence**: Added `redux-persist` to `store.js` to persist the user's email (`state.user.email`) across page refreshes, ensuring seamless state management.
+- ✅ **Error Handling**: Updated `fetchProfile` to handle 401/403 errors by redirecting to the login page if the user is unauthorized.
+
+## **3️⃣ Key Achievements**
+
+- Successfully implemented cookie-based authentication, securing protected routes with the `authToken` cookie.
+- Enhanced user experience by persisting the email in Redux across refreshes using `redux-persist`.
+- Demonstrated practical application with a profile feature, allowing users to manage their profiles securely.
+- Improved security by using `httpOnly` cookies and middleware-based authentication, preventing unauthorized access.
