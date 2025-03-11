@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setEmail } from "../store/userActions";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch=useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -28,6 +31,7 @@ const Login = () => {
 
       if (response.ok) {
         alert("Login successful!");
+        dispatch(setEmail(email));
         localStorage.setItem("userEmail", email);
         localStorage.setItem("token", data.token);
         navigate("/"); // Redirect to products page

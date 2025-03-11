@@ -734,3 +734,20 @@ The cart functionality is now fully integrated, allowing users to view their car
 
 - Successfully set up Redux to manage the user’s email as a global state, accessible across components like `OrderConfirmation`, `PaymentOptions`, and `MyOrders`.
 - Established a foundation for centralized state management in the e-commerce application.
+
+# **Milestone 32: Progress Summary**
+
+## **1️⃣ Frontend Setup**
+
+- ✅ **Dispatch Email in Login**: Updated the `Login` page to use `useDispatch` from `react-redux` to dispatch the `setEmail` action, storing the user’s email in the global state after a successful login.
+- ✅ **Access Email with useSelector**: Modified `OrderConfirmation`, `PaymentOptions`, and `MyOrders` pages to access the user’s email from the Redux store using `useSelector`, replacing previous methods (`localStorage`, URL params, or navigation state).
+- ✅ **Removed Redundant Email Storage**: Removed `localStorage` usage for storing the email in `Login` and other pages, relying entirely on Redux for email management.
+
+## **2️⃣ Backend Setup**
+
+- ✅ **No Changes**: Leveraged existing endpoints (`/login`, `/getCart`, `/getUserByEmail`, `/api/v1/orders/create`) without modifications.
+
+## **3️⃣ Key Achievements**
+
+- Successfully used Redux to store and access the user’s email across the application, ensuring consistent state management.
+- Eliminated dependency on `localStorage` and URL params for email access, improving security and maintainability.
