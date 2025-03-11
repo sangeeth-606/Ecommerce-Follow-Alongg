@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 const ProductInfoPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1); // Default quantity is 1
+  const userEmail=useSelector((state)=>state.user.email);
+  
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -23,7 +25,7 @@ const ProductInfoPage = () => {
   }, [id]);
   const handleAddToCart = async () => {
     const productId = id; // Get from useParams()
-    const userEmail = localStorage.getItem("userEmail"); // Get email from localStorage
+    // const userEmail=useSelector((state)=>state.user.email);// Get email from localStorage
     const quantity = 1;
 
     try {
@@ -43,29 +45,7 @@ const ProductInfoPage = () => {
     }
   };
 
-  // const handleAddToCart = async () => {
-  //   const productId = id;
-  //   const userEmail = localStorage.getItem("userEmail"); // Get from localStorage
-  //   const quantity = 1;
-
-  //   if (!userEmail) {
-  //     console.error("No userEmail found in localStorage");
-  //     return;
-  //   }
-
-  //   try {
-  //     const res = await fetch(`https://ecommerce-zof6.onrender.com/addToCart/${productId}`, {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify({ userEmail, quantity }), // Send userEmail in body
-  //     });
-
-  //     const data = await res.json();
-  //     console.log(data);
-  //   } catch (error) {
-  //     console.error("Error adding to cart:", error);
-  //   }
-  // };
+  
 
   return (
     <div className="pt-16 flex flex-col items-center justify-center min-h-screen">

@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import EditProductForm from "./EditProductForm";
+import { useSelector } from "react-redux";
 
 const ProductCardList = () => {
   const [products, setProducts] = useState([]);
   const [editingProduct, setEditingProduct] = useState(null);
-  const userEmail = localStorage.getItem("userEmail");
+  // const userEmail = localStorage.getItem("userEmail");
+  const userEmail=useSelector((state)=>state.user.email);
 
   useEffect(() => {
     if (!userEmail) return;

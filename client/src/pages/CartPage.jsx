@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import {
   ShoppingBag,
   Minus,
@@ -16,15 +17,13 @@ function CartPage() {
   const [discount, setDiscount] = useState(0);
   const [couponCode, setCouponCode] = useState("");
   const navigate = useNavigate();
+  const userEmail=useSelector((state)=>state.user.email);
 
   useEffect(() => {
     const fetchCart = async () => {
-      const userEmail = localStorage.getItem("userEmail");
+      
 
-      if (!userEmail) {
-        console.error("No userEmail found in localStorage");
-        return;
-      }
+      
 
       try {
         const res = await fetch(
@@ -64,7 +63,7 @@ function CartPage() {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            userEmail: localStorage.getItem("userEmail"),
+            userEmail,
             productId,
             quantity: newQuantity,
           }),
@@ -102,7 +101,7 @@ function CartPage() {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            userEmail: localStorage.getItem("userEmail"),
+            userEmail,
             productId,
           }),
         }
@@ -364,7 +363,7 @@ function CartPage() {
 
             <button
               onClick={() => {
-                const userEmail = localStorage.getItem("userEmail");
+                // const userEmail = localStorage.getItem("userEmail");
                 if (userEmail) {
                   navigate(
                     `/select-address?userEmail=${encodeURIComponent(userEmail)}`

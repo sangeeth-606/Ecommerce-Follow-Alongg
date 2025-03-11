@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Package, RefreshCw, ShoppingCart, MapPin, X } from "lucide-react"; // Added X icon for cancel
+import { useSelector } from "react-redux";
 
 const MyOrders = () => {
   const [orders, setOrders] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const userEmail = localStorage.getItem("userEmail");
+  const userEmail=useSelector((state)=>state.user.email);
 
   useEffect(() => {
     if (!userEmail) {

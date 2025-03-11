@@ -50,6 +50,7 @@ const loginUser = async (req, res) => {
       secure: process.env.NODE_ENV === "production", // Use secure in production
       sameSite: "strict", // Protects against CSRF
     });
+    console.log("Cookie set:", token); // Debug log
 
     // Send success response (no token in body, as it's in cookie)
     res.status(200).json({ message: "Login successful" });
