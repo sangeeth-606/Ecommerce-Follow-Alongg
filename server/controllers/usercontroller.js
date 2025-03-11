@@ -49,7 +49,7 @@ const loginUser = async (req, res) => {
       httpOnly: true,
       maxAge: 3600000,
       secure: true, // Force insecure for local testing
-      sameSite: "lax", // Relaxed for testing
+      sameSite: "none", // Relaxed for testing
     });
     console.log("Cookie set with token:", token); // Confirm cookie set
 
