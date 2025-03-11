@@ -1,6 +1,5 @@
-
-
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
   const [profile, setProfile] = useState(null);
@@ -14,7 +13,7 @@ const Profile = () => {
     country: "",
     addressType: "home",
   });
-  const userEmail = localStorage.getItem("userEmail");
+  const userEmail = useSelector((state) => state.user.email);
 
   useEffect(() => {
     fetchProfile();
@@ -35,6 +34,7 @@ const Profile = () => {
         {
           method: "GET",
           headers: { "Content-Type": "application/json" },
+          credentials: "include",
         }
       );
       const userData = await userResponse.json();
@@ -55,6 +55,7 @@ const Profile = () => {
         {
           method: "GET",
           headers: { "Content-Type": "application/json" },
+          credentials: "include",
         }
       );
       const profileData = await profileResponse.json();

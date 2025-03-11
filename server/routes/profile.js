@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const { createProfile, getProfile } = require('../controllers/profileController');
-// const { isAuthenticated } = require('../middleware/auth');
+const authenticateToken = require('../middleware/auth'); // Import the middleware
 
 // Profile routes
-router.post('/create', createProfile);
-router.get('/getProfile',getProfile);
+router.post('/create', authenticateToken, createProfile);
+router.get('/getProfile', authenticateToken, getProfile);
 
 module.exports = router;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setEmaill } from "../store/userActions.js"; // Changed to singular
+import { setEmaill } from "../store/userActions.js"; 
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -11,24 +11,25 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (!email || !password) {
       alert("Please enter both email and password");
       return;
     }
-
+  
     try {
       const response = await fetch("https://ecommerce-zof6.onrender.com/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include", // Allow cookies to be set
         body: JSON.stringify({ email, password }),
       });
-
+  
       const data = await response.json();
-
+  
       if (response.ok) {
         alert("Login successful!");
-        console.log("setEmail:", setEmail); // Debug log
+        console.log("setEmail (useState):", setEmail); // Debug for useState setter
         dispatch(setEmaill(email));
         navigate("/");
       } else {
