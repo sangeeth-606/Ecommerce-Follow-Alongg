@@ -23,14 +23,7 @@ app.use(cors({
   allowedHeaders: ['Content-Type','Authorization','X-Requested-With'],
   credentials: true
 }));
-// app.use(cors({
-//   origin: 'http://localhost:5173',
-//   methods: ['GET','POST','PUT','PATCH','DELETE','OPTIONS'],
-//   allowedHeaders: ['Content-Type','Authorization','X-Requested-With'],
-//   credentials: true
-// }));
-// ...existing code...
-// Middleware for JSON and URL-encoded data
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
