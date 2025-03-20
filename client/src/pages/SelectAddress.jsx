@@ -26,31 +26,33 @@ const SelectAddress = () => {
         {
           method: "GET",
           headers: { "Content-Type": "application/json" },
+          credentials: "include", // Add this
         }
       );
       console.log("User Response Status:", userResponse.status);
-
+  
       const userData = await userResponse.json();
       console.log("User Data:", userData);
-
+  
       if (!userResponse.ok) {
         throw new Error(userData.error || "Failed to fetch user data");
       }
-
+  
       const userId = userData._id;
-
+  
       const profileResponse = await fetch(
         `https://ecommerce-zof6.onrender.com/api/v1/profile/getProfile?userId=${userId}`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json" },
+          credentials: "include", // Add this
         }
       );
       console.log("Profile Response Status:", profileResponse.status);
-
+  
       const profileData = await profileResponse.json();
       console.log("Profile Data:", profileData);
-
+  
       if (!profileResponse.ok) {
         if (profileResponse.status === 404) {
           setAddresses([]);
