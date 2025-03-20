@@ -24,7 +24,7 @@ const productSchema = new mongoose.Schema({
   },
   userEmail: {
     type: String,
-    required: [true],
+    required: [true], 
   }
   
 });
