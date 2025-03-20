@@ -57,6 +57,15 @@ const MyOrders = () => {
         throw new Error(ordersData.message || "Failed to fetch orders");
       }
 
+      // Log the orders data to inspect it
+      console.log("Fetched orders data:", ordersData);
+
+      // Check for orders with null productId
+      const invalidOrders = ordersData.orders.filter(order => order.productId === null);
+      if (invalidOrders.length > 0) {
+        console.warn("Orders with null productId:", invalidOrders);
+      }
+
       setOrders(ordersData.orders || []);
       setError(null);
     } catch (error) {
