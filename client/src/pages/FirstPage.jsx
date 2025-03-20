@@ -1,6 +1,6 @@
 import React from 'react';
 import { ShoppingBag, ArrowRight, Shield, Truck, HeadphonesIcon } from 'lucide-react';
-import { Link, Links } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 
 function FirstPage() {
   return (
