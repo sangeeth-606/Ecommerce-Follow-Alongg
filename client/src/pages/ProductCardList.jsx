@@ -11,8 +11,8 @@ const ProductCardList = () => {
 
   useEffect(() => {
     if (!userEmail) return;
-
-    fetch(`https://ecommerce-zof6.onrender.com/getProducts?email=${userEmail}`)
+    // fetch(`https://ecommerce-zof6.onrender.com/getProducts?email=${userEmail}`)
+    fetch('https://ecommerce-zof6.onrender.com/getProducts')
       .then((response) => response.json())
       .then((data) => setProducts(data))
       .catch((error) => console.error("Error fetching products:", error));

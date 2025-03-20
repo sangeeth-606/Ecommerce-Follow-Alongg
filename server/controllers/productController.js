@@ -47,13 +47,13 @@ const createProduct = async (req, res) => {
 
 const getProducts = async (req, res) => {
   try {
-    const { email } = req.query;
+    // const { email } = req.query;
 
-    if (!email) {
-      return res.status(400).json({ error: "Email is required" });
-    }
+    // if (!email) {
+    //   return res.status(400).json({ error: "Email is required" });
+    // }
 
-    const products = await Product.find({ userEmail: email });
+    const products = await Product.find();
     res.json(products);
   } catch (error) {
     res.status(500).json({ error: "Error fetching products" });
