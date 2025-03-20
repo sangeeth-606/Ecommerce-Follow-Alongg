@@ -24,17 +24,17 @@ const createUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
   try {
-    console.log("Login request received:", req.body); // Log incoming request
+    console.log("Login request received:", req.body);
     const { email, password } = req.body;
 
     const existingUser = await user.findOne({ email });
-    console.log("User lookup result:", existingUser); // Log user found or null
+    console.log("User lookup result:", existingUser);
     if (!existingUser) {
       return res.status(404).json({ error: "User not found" });
     }
 
     const isPasswordValid = await bcrypt.compare(password, existingUser.password);
-    console.log("Password validation result:", isPasswordValid); // Log password check
+    console.log("Password validation result:", isPasswordValid);
     if (!isPasswordValid) {
       return res.status(401).json({ error: "Invalid password" });
     }
@@ -47,17 +47,16 @@ const loginUser = async (req, res) => {
 
     res.cookie("authToken", token, {
       httpOnly: true,
-      maxAge: 3600000,
-      secure: true, // Ensure secure cookie on HTTPS
-      sameSite: "none", // Required for cross-origin requests
-      domain: ".onrender.com", // ✅ Important for cross-domain cookies
+      maxAge: 3600000, // 1 hour
+      secure: true,    // Required for HTTPS
+      sameSite: "none" // Required for cross-origin requests
+      // Remove domain: ".onrender.com" entirely
     });
-    
-    console.log("Cookie set with token:", token); // Confirm cookie set
 
+    console.log("Cookie set with token:", token);
     res.status(200).json({ message: "Login successful" });
   } catch (error) {
-    console.log("Error during login:", error); // Log any exceptions
+    console.log("Error during login:", error);
     res.status(500).json({ error: "Error logging in" });
   }
 };
