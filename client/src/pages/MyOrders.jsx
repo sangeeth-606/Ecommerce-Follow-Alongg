@@ -66,6 +66,14 @@ const MyOrders = () => {
         console.warn("Orders with null productId:", invalidOrders);
       }
 
+      // Log each order to inspect productId
+      ordersData.orders.forEach(order => {
+        console.log("Order:", order);
+        if (order.productId === null) {
+          console.warn("Order with null productId found:", order);
+        }
+      });
+
       setOrders(ordersData.orders || []);
       setError(null);
     } catch (error) {
