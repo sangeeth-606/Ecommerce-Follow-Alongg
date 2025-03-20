@@ -48,9 +48,11 @@ const loginUser = async (req, res) => {
     res.cookie("authToken", token, {
       httpOnly: true,
       maxAge: 3600000,
-      secure: true, // Force insecure for local testing
-      sameSite: "none", // Relaxed for testing
+      secure: true, // Ensure secure cookie on HTTPS
+      sameSite: "none", // Required for cross-origin requests
+      domain: ".onrender.com", // ✅ Important for cross-domain cookies
     });
+    
     console.log("Cookie set with token:", token); // Confirm cookie set
 
     res.status(200).json({ message: "Login successful" });
