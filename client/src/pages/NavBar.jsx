@@ -6,7 +6,7 @@ const NavBar = () => {
   return (
     <nav className="bg-gradient-to-r from-slate-800 via-slate-900 to-slate-950 p-4 shadow-lg fixed w-full top-0 z-50">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
-        <Link to="/" className="text-white text-2xl font-bold mb-4 md:mb-0">
+        <Link to="/home" className="text-white text-2xl font-bold mb-4 md:mb-0">
           E-Commerce
         </Link>
 
