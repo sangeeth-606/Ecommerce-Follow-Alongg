@@ -14,12 +14,12 @@ function FirstPage() {
             </div>
             <span className="text-3xl font-bold text-white tracking-tight">E-COM</span>
           </div>
-          <a
-            href="/login"
+          <Link 
+            to="/login"
             className="px-8 py-3 bg-white/10 backdrop-blur-lg text-white rounded-xl font-semibold hover:bg-white/20 transition-all border border-white/20"
           >
             Login
-          </a>
+          </Link>
         </div>
       </nav>
 
