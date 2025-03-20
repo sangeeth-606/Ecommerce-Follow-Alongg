@@ -31,7 +31,7 @@ const Login = () => {
         alert("Login successful!");
         console.log("setEmail (useState):", setEmail); // Debug for useState setter
         dispatch(setEmaill(email));
-        navigate("/");
+        navigate("/home");
       } else {
         alert(data.error || "Login failed");
       }
