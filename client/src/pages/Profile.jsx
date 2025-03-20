@@ -26,7 +26,7 @@ const Profile = () => {
       setError("User email not found. Please log in again.");
       return;
     }
-
+  
     try {
       // Fetch user _id and details by email
       const userResponse = await fetch(
@@ -38,17 +38,17 @@ const Profile = () => {
         }
       );
       const userData = await userResponse.json();
-
+  
       if (!userResponse.ok) {
         throw new Error(userData.error || "Failed to fetch user data");
       }
-
+  
       const userId = userData._id;
-
+  
       if (!userId) {
         throw new Error("User ID not found in response");
       }
-
+  
       // Fetch profile using the user _id
       const profileResponse = await fetch(
         `https://ecommerce-zof6.onrender.com/api/v1/profile/getProfile?userId=${userId}`,
@@ -59,7 +59,7 @@ const Profile = () => {
         }
       );
       const profileData = await profileResponse.json();
-
+  
       if (!profileResponse.ok) {
         if (profileResponse.status === 404) {
           // No profile exists, create a new one
@@ -80,30 +80,32 @@ const Profile = () => {
                   addressType: "home",
                 },
               }),
+              credentials: "include", // Fixed here
             }
           );
-
+  
           const createProfileData = await createProfileResponse.json();
-
+  
           if (!createProfileResponse.ok) {
             throw new Error(createProfileData.error || "Failed to create profile");
           }
-
+  
           // Fetch the newly created profile
           const newProfileResponse = await fetch(
             `https://ecommerce-zof6.onrender.com/api/v1/profile/getProfile?userId=${userId}`,
             {
               method: "GET",
               headers: { "Content-Type": "application/json" },
+              credentials: "include", // Fixed here
             }
           );
-
+  
           const newProfileData = await newProfileResponse.json();
-
+  
           if (!newProfileResponse.ok) {
             throw new Error(newProfileData.error || "Failed to fetch profile after creation");
           }
-
+  
           // Set the profile data in the state
           setProfile({
             name: userData.name,
