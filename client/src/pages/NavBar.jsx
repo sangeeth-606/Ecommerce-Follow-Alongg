@@ -19,7 +19,7 @@ const NavBar = () => {
           </Link>
 
           <Link
-            to="/"
+            to="/home"
             className="text-white/80 hover:bg-slate-700 px-4 py-2 rounded transition-colors"
           >
             My Products
