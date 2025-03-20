@@ -1,5 +1,6 @@
 import React from 'react';
 import { ShoppingBag, ArrowRight, Shield, Truck, HeadphonesIcon } from 'lucide-react';
+import { Link, Links } from 'react-router-dom';
 
 function FirstPage() {
   return (
@@ -36,13 +37,13 @@ function FirstPage() {
             <p className="text-xl text-white/80 mb-10 max-w-xl leading-relaxed">
               Experience the next generation of e-commerce. Premium products, seamless checkout, and lightning-fast delivery.
             </p>
-            <a
-              href="/login"
+            <Link
+              to="/login"
               className="group inline-flex items-center space-x-3 px-8 py-4 bg-white text-slate-800 rounded-xl font-semibold hover:bg-opacity-90 transition-all shadow-lg hover:shadow-xl"
             >
               <span>Start Shopping</span>
               <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </a>
+            </Link>
           </div>
           <div className="flex-1 relative">
             <div className="absolute inset-0 bg-gradient-to-r from-slate-800/20 to-transparent rounded-3xl transform rotate-3"></div>
