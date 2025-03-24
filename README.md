@@ -815,3 +815,11 @@ The cart functionality is now fully integrated, allowing users to view their car
 - Enhanced user experience by persisting the email in Redux across refreshes using `redux-persist`.
 - Demonstrated practical application with a profile feature, allowing users to manage their profiles securely.
 - Improved security by using `httpOnly` cookies and middleware-based authentication, preventing unauthorized access.
+
+# **Milestone 35: Project Deployment**
+
+**In this milestone, we successfully deployed both the frontend and backend components of our e-commerce application to production environments.**
+
+**Frontend deployed at:** https://ecommerce-follow-alongg.vercel.app/
+
+**Backend deployed at:** https://ecommerce-zof6.onrender.com
