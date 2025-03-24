@@ -40,7 +40,7 @@ const OrderSuccess = () => {
 
         {/* Button */}
         <button
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/home")}
           className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium flex items-center justify-center mx-auto hover:bg-blue-700 transition-colors duration-300"
         >
           <Home className="w-5 h-5 mr-2" />
