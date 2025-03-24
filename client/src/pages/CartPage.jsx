@@ -21,26 +21,23 @@ function CartPage() {
 
   useEffect(() => {
     const fetchCart = async () => {
-      
-
-      
-
       try {
         const res = await fetch(
           `https://ecommerce-zof6.onrender.com/getCart?userEmail=${userEmail}`
         );
-
+  
         if (!res.ok) {
           throw new Error(`HTTP error! Status: ${res.status}`);
         }
-
+  
         const data = await res.json();
         console.log("Fetched cart items:", data);
-
-        setCartItems(data.cart || []);
-
+  
+        const validCartItems = (data.cart || []).filter(item => item.productId);
+        setCartItems(validCartItems);
+  
         // Calculate subtotal
-        const total = (data.cart || []).reduce(
+        const total = validCartItems.reduce(
           (sum, item) => sum + item.productId.price * item.quantity,
           0
         );
@@ -49,9 +46,9 @@ function CartPage() {
         console.error("Error fetching cart:", error);
       }
     };
-
+  
     fetchCart();
-  }, []);
+  }, [userEmail]);
 
   const updateQuantity = async (productId, newQuantity) => {
     if (newQuantity < 1) return;
