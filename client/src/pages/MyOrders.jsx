@@ -11,6 +11,69 @@ const MyOrders = () => {
   const userEmail=useSelector((state)=>state.user.email);
 
   useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        setLoading(true);
+  
+        // Step 1: Fetch user _id by email using /getUserByEmail
+        const userResponse = await fetch(
+          `https://ecommerce-zof6.onrender.com/getUserByEmail?userEmail=${encodeURIComponent(
+            userEmail
+          )}`,
+          {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+  
+        const userData = await userResponse.json();
+  
+        if (!userResponse.ok) {
+          throw new Error(userData.error || "Failed to fetch user data");
+        }
+  
+        const userId = userData._id;
+  
+        // Step 2: Fetch orders using the user _id via /api/v1/orders/user-orders
+        const ordersResponse = await fetch(
+          `https://ecommerce-zof6.onrender.com/api/v1/orders/user-orders?userId=${userId}`,
+          {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+  
+        const ordersData = await ordersResponse.json();
+  
+        if (!ordersResponse.ok) {
+          throw new Error(ordersData.message || "Failed to fetch orders");
+        }
+  
+        // Log the orders data to inspect it
+        console.log("Fetched orders data:", ordersData);
+  
+        // Check for orders with null productId
+        const invalidOrders = ordersData.orders.filter(order => order.productId === null);
+        if (invalidOrders.length > 0) {
+          console.warn("Orders with null productId:", invalidOrders);
+        }
+  
+        // Filter out orders with null productId
+        const validOrders = ordersData.orders.filter(order => order.productId);
+  
+        setOrders(validOrders);
+        setError(null);
+      } catch (error) {
+        console.error("Error fetching orders:", error);
+        setError(
+          error.message ||
+            "An error occurred while loading your orders. Please try again later."
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+  
     if (!userEmail) {
       setError("User email not found. Please log in again.");
       setLoading(false);
@@ -18,75 +81,7 @@ const MyOrders = () => {
     }
     fetchOrders();
   }, [userEmail]);
-
-  const fetchOrders = async () => {
-    try {
-      setLoading(true);
-
-      // Step 1: Fetch user _id by email using /getUserByEmail
-      const userResponse = await fetch(
-        `https://ecommerce-zof6.onrender.com/getUserByEmail?userEmail=${encodeURIComponent(
-          userEmail
-        )}`,
-        {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-        }
-      );
-
-      const userData = await userResponse.json();
-
-      if (!userResponse.ok) {
-        throw new Error(userData.error || "Failed to fetch user data");
-      }
-
-      const userId = userData._id;
-
-      // Step 2: Fetch orders using the user _id via /api/v1/orders/user-orders
-      const ordersResponse = await fetch(
-        `https://ecommerce-zof6.onrender.com/api/v1/orders/user-orders?userId=${userId}`,
-        {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-        }
-      );
-
-      const ordersData = await ordersResponse.json();
-
-      if (!ordersResponse.ok) {
-        throw new Error(ordersData.message || "Failed to fetch orders");
-      }
-
-      // Log the orders data to inspect it
-      console.log("Fetched orders data:", ordersData);
-
-      // Check for orders with null productId
-      const invalidOrders = ordersData.orders.filter(order => order.productId === null);
-      if (invalidOrders.length > 0) {
-        console.warn("Orders with null productId:", invalidOrders);
-      }
-
-      // Log each order to inspect productId
-      ordersData.orders.forEach(order => {
-        console.log("Order:", order);
-        if (order.productId === null) {
-          console.warn("Order with null productId found:", order);
-        }
-      });
-
-      setOrders(ordersData.orders || []);
-      setError(null);
-    } catch (error) {
-      console.error("Error fetching orders:", error);
-      setError(
-        error.message ||
-          "An error occurred while loading your orders. Please try again later."
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
-
+  
   const handleCancelOrder = async (orderId) => {
     try {
       const response = await fetch(
@@ -96,7 +91,7 @@ const MyOrders = () => {
           headers: { "Content-Type": "application/json" },
         }
       );
-
+  
       const data = await response.json();
       if (response.ok) {
         console.log("Order canceled successfully:", data);
@@ -117,6 +112,8 @@ const MyOrders = () => {
       );
     }
   };
+  
+  // ...existing code...
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 mt-16">
