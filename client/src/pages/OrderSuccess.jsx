@@ -10,7 +10,7 @@ const OrderSuccess = () => {
   useEffect(() => {
     // Navigate back to homepage after 5 seconds
     const timer = setTimeout(() => {
-      navigate("/");
+      navigate("/home");
     }, 5000);
 
     // Cleanup timer on unmount to prevent memory leaks
