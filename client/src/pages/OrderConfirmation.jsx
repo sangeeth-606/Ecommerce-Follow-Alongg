@@ -21,7 +21,7 @@ const OrderConfirmation = () => {
     }
     fetchCartAndAddress();
   }, [userEmail, addressParam]);
-
+  
   const fetchCartAndAddress = async () => {
     try {
       console.log("Fetching cart and address for userEmail:", userEmail);
@@ -33,13 +33,16 @@ const OrderConfirmation = () => {
       }
       const cartData = await cartResponse.json();
       console.log("Cart Data:", cartData);
-      setCartItems(cartData.cart || []);
-      const total = (cartData.cart || []).reduce(
+  
+      const validCartItems = (cartData.cart || []).filter(item => item.productId);
+      setCartItems(validCartItems);
+  
+      const total = validCartItems.reduce(
         (sum, item) => sum + (item.productId.price * item.quantity),
         0
       );
       setSubtotal(total);
-
+  
       const decodedAddress = JSON.parse(decodeURIComponent(addressParam));
       setSelectedAddress(decodedAddress);
     } catch (error) {
@@ -47,13 +50,13 @@ const OrderConfirmation = () => {
       setError("An error occurred while loading order details. Please try again later.");
     }
   };
-
+  
   const handlePlaceOrder = async () => {
     if (!userEmail || !cartItems.length || !selectedAddress) {
       setError("Missing order details. Please check your cart and address.");
       return;
     }
-
+  
     // Validate cart items
     const validCartItems = cartItems.every(item => 
       item.productId && item.productId._id && item.quantity && item.productId.price
@@ -62,19 +65,19 @@ const OrderConfirmation = () => {
       setError("Invalid cart items. Please review your cart.");
       return;
     }
-
+  
     // Validate subtotal
     if (!subtotal || subtotal <= 0) {
       setError("Invalid total price. Please review your cart.");
       return;
     }
-
+  
     // Validate address
     if (!selectedAddress.street || !selectedAddress.city || !selectedAddress.zipCode || !selectedAddress.country) {
       setError("Invalid address. Please select a valid delivery address.");
       return;
     }
-
+  
     try {
       console.log("Navigating to payment options with data:", {
         userEmail,
@@ -82,7 +85,7 @@ const OrderConfirmation = () => {
         subtotal,
         selectedAddress,
       });
-
+  
       // Navigate to payment options page with order details as state
       navigate("/payment-options", {
         state: {
